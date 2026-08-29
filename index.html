@@ -7,18 +7,10 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <meta name="description" content="Pages at xt-ml.github.io" />
-    <!--
     <meta
-      http-equiv="refresh"
-      content="0;url=https://xt-ml.github.io/shadow-claw/"
+      name="description"
+      content="Projects, documentation, and static deployments from the xt-ml organization."
     />
-    -->
-    <!--
-    <script>
-      location.replace("https://xt-ml.github.io/shadow-claw/");
-    </script>
-    -->
     <link
       rel="icon"
       type="image/x-icon"
@@ -29,6 +21,29 @@
       href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEUAAACnej3aAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
     />
     <style>
+      :root {
+        --color-text: #1a1a1a;
+        --color-muted: #666;
+        --color-border: #e1e4e8;
+        --color-bg-code: #f6f8fa;
+        --color-link: #0969da;
+        --color-link-hover: #0550ae;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-text: #e6edf3;
+          --color-muted: #8b949e;
+          --color-border: #30363d;
+          --color-bg-code: #161b22;
+          --color-link: #58a6ff;
+          --color-link-hover: #79c0ff;
+        }
+        body {
+          background-color: #0d1117;
+        }
+      }
+
       body {
         font-family:
           system-ui,
@@ -42,116 +57,211 @@
           "Open Sans",
           "Helvetica Neue",
           sans-serif;
-        line-height: 1.5;
+        line-height: 1.6;
         margin: auto;
-        max-width: 50rem;
-        padding: 0 1rem;
-        color: #000;
+        max-width: 52rem;
+        padding: 2rem 1.5rem 4rem;
+        color: var(--color-text);
       }
 
-      .nav-section {
-        margin-bottom: 2rem;
+      header {
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 1rem;
       }
 
-      .nav-section__title {
+      .header-title {
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 0.5rem;
+        align-items: baseline;
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
       }
 
-      .nav-section__title a,
-      .nav-section__title a:visited {
-        color: #000;
+      .header-title a {
+        color: var(--color-text);
         text-decoration: none;
       }
 
-      .nav-section__title a:hover,
-      .nav-section__title a:focus {
-        text-decoration: underline;
+      .header-subtitle {
+        color: var(--color-muted);
+        margin: 0.5rem 0 0;
+        font-size: 1rem;
       }
 
-      .sitemap {
-        list-style-type: none;
-        padding-left: 0;
+      h2 {
+        font-size: 1.35rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 0.4rem;
       }
 
-      .sitemap__list {
-        list-style-type: disc;
-        padding-left: 1.5rem;
-      }
-
-      .sitemap__item {
-        margin-top: 0.25rem;
-      }
-
-      .sitemap__link {
-        color: #000;
-        text-decoration: underline;
-      }
-
-      .sitemap__link:visited {
-        color: #999;
-      }
-
-      .sitemap__link:hover,
-      .sitemap__link:focus {
-        color: #555;
-        outline: none;
-        text-decoration: none;
-        background-color: #f0f0f0;
-      }
-
-      .sitemap__category {
-        font-weight: bold;
+      h3 {
         font-size: 1.1rem;
-        margin-top: 1rem;
-        display: block;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        color: var(--color-link);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      .project-card {
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .project-card__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-card__title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .project-card__links {
+        display: flex;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .project-card__desc {
+        color: var(--color-muted);
+        margin: 0;
+        font-size: 0.95rem;
       }
 
       pre {
-        overflow: auto;
+        background-color: var(--color-bg-code);
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        padding: 0.85rem 1rem;
+        overflow-x: auto;
+        font-size: 0.875rem;
+        line-height: 1.45;
       }
 
       code {
-        text-wrap: auto;
+        font-family:
+          ui-monospace,
+          SFMono-Regular,
+          SF Mono,
+          Menlo,
+          Consolas,
+          Liberation Mono,
+          monospace;
+      }
+
+      ul {
+        padding-left: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.35rem;
       }
     </style>
   </head>
 
   <body>
-    <header class="nav-section">
-      <h1 class="nav-section__title">
+    <header>
+      <div class="header-title">
         <a href="https://xt-ml.github.io/">xt-ml.github.io</a>
-      </h1>
+      </div>
+      <p class="header-subtitle">
+        Projects, documentation, and static deployments from the
+        <strong>xt-ml</strong> organization.
+      </p>
     </header>
 
     <main>
-      <h2>Site Pages</h2>
+      <h2>Published Projects & Sites</h2>
 
-      <nav aria-label="Site Map">
-        <ul class="sitemap">
-          <li>
-            <span class="sitemap__category">Software</span>
-            <ul class="sitemap__list">
-              <li class="sitemap__item">
-                <a
-                  class="sitemap__link"
-                  href="https://xt-ml.github.io/shadow-claw/"
-                  >ShadowClaw</a
-                >
-              </li>
-              <li class="sitemap__item">
-                <a
-                  class="sitemap__link"
-                  href="https://xt-ml.github.io/shadow-claw-template/"
-                  >ShadowClaw Template</a
-                >
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      <div class="project-card">
+        <div class="project-card__header">
+          <h3 class="project-card__title">
+            <a href="https://xt-ml.github.io/shadow-claw/">ShadowClaw</a>
+          </h3>
+          <div class="project-card__links">
+            <a href="https://xt-ml.github.io/shadow-claw/">Live App</a> ·
+            <a href="https://github.com/xt-ml/shadow-claw">GitHub Repo</a>
+          </div>
+        </div>
+        <p class="project-card__desc">
+          Browser-native, personal AI assistant with local and remote LLM
+          support, Web Workers, OPFS file storage, and agentic tool execution.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card__header">
+          <h3 class="project-card__title">
+            <a href="https://xt-ml.github.io/shadow-claw-template/"
+              >ShadowClaw Template</a
+            >
+          </h3>
+          <div class="project-card__links">
+            <a href="https://xt-ml.github.io/shadow-claw-template/"
+              >Live Preview</a
+            >
+            ·
+            <a href="https://github.com/xt-ml/shadow-claw-template"
+              >GitHub Repo</a
+            >
+          </div>
+        </div>
+        <p class="project-card__desc">
+          Starter template repository for authoring and deploying static
+          websites, knowledge hubs, and custom agent skills driven by the
+          ShadowClaw engine.
+        </p>
+      </div>
+
+      <h2>Static Publishing with ShadowClaw</h2>
+
+      <p>
+        Sites across the organization leverage ShadowClaw's dual-root build
+        pipeline and CLI tool for local development and CI/CD:
+      </p>
+
+      <h3>Local Development</h3>
+      <pre><code># Start local development server on http://127.0.0.1:8888
+npx shadow-claw dev
+
+# Or compile static production distribution into ./dist/public
+npx shadow-claw build --prod</code></pre>
+
+      <h3>Deployment Strategies</h3>
+      <ul>
+        <li>
+          <strong>Strategy A (Full Fork):</strong> Clone or fork
+          <code>xt-ml/shadow-claw</code> with custom in-repo pages.
+        </li>
+        <li>
+          <strong>Strategy B (Pages-only Repo):</strong> Content repo that
+          checks out <code>xt-ml/shadow-claw</code> in GitHub Actions CI.
+        </li>
+        <li>
+          <strong>Strategy C (NPM / CLI):</strong> Fast build directly via
+          <code>npx shadow-claw build --prod</code> in GitHub Actions.
+        </li>
+      </ul>
     </main>
   </body>
 </html>
