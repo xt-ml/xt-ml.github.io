@@ -200,6 +200,10 @@
           </h3>
           <div class="project-card__links">
             <a href="https://xt-ml.github.io/shadow-claw/">Live App</a> ·
+            <a href="https://github.com/xt-ml/shadow-claw/blob/main/README.md"
+              >README</a
+            >
+            ·
             <a href="https://github.com/xt-ml/shadow-claw">GitHub Repo</a>
           </div>
         </div>
@@ -219,6 +223,11 @@
           <div class="project-card__links">
             <a href="https://xt-ml.github.io/shadow-claw-template/"
               >Live Preview</a
+            >
+            ·
+            <a
+              href="https://github.com/xt-ml/shadow-claw-template/blob/main/README.md"
+              >README</a
             >
             ·
             <a href="https://github.com/xt-ml/shadow-claw-template"
@@ -241,26 +250,126 @@
             >
           </h3>
           <div class="project-card__links">
+            <a
+              href="https://github.com/xt-ml/shadow-claw-agent-cli-weather/blob/main/README.md"
+              >README</a
+            >
+            ·
             <a href="https://github.com/xt-ml/shadow-claw-agent-cli-weather"
               >GitHub Repo</a
             >
           </div>
         </div>
         <p class="project-card__desc">
-          Model-agnostic, headless weather station and outdoor operations
-          advisor with current conditions, multi-day forecasts, global location
-          lookup, hourly weather windows, and Unix-pipe follow-up queries.
+          Model-agnostic weather and report-generation pipeline for operational
+          forecasting, downstream markdown generation, and agent-driven
+          automation workflows.
         </p>
       </div>
 
       <h2>Static Publishing with ShadowClaw</h2>
 
       <p>
-        Sites across the organization leverage ShadowClaw's dual-root build
-        pipeline and CLI tool for local development and CI/CD:
+        ShadowClaw combines an interactive browser or Electron client with a
+        headless Node.js agent, a local service layer, and external tool
+        connections. The same agentic core, declarative skills, and tool
+        pipelines can run across each environment.
       </p>
 
-      <h3>Local Development</h3>
+      <h3>Documentation</h3>
+      <p>
+        Read the
+        <a href="https://xt-ml.github.io/shadow-claw/docs/README.md"
+          >public documentation index</a
+        >, including the
+        <a
+          href="https://xt-ml.github.io/shadow-claw/docs/architecture/overview.md"
+          >architecture overview</a
+        >,
+        <a href="https://xt-ml.github.io/shadow-claw/docs/subsystems/cli.md"
+          >CLI and static publishing guide</a
+        >,
+        <a
+          href="https://xt-ml.github.io/shadow-claw/docs/subsystems/control-plane.md"
+          >control plane reference</a
+        >,
+        <a href="https://xt-ml.github.io/shadow-claw/docs/subsystems/webmcp.md"
+          >WebMCP guide</a
+        >, and
+        <a
+          href="https://xt-ml.github.io/shadow-claw/docs/subsystems/mcp-server.md"
+          >MCP server reference</a
+        >.
+      </p>
+
+      <h3>Interactive Client</h3>
+      <p>
+        Run the browser-native PWA or Electron desktop app with orchestration,
+        model calls, and tools isolated in a Web Worker. Client workspaces use
+        OPFS and IndexedDB, with Web Components providing the interface.
+      </p>
+      <pre><code># Start the interactive client with live reload
+npx shadow-claw dev --open</code></pre>
+
+      <h3>Headless CLI Agent</h3>
+      <p>
+        Run the same reasoning loop directly from a terminal or CI pipeline. The
+        CLI uses Node.js, native filesystem access, SQLite persistence, host
+        shell execution, and local or cloud model providers.
+      </p>
+      <pre><code># Initialize a workspace and run a headless prompt
+npx shadow-claw agent init ./my-project
+npx shadow-claw agent --workspace ./my-project run "summarize this workspace"
+
+# Inspect available headless-safe tools and skills
+npx shadow-claw agent tools
+npx shadow-claw agent skills</code></pre>
+
+      <h3>Server &amp; Control Plane</h3>
+      <p>
+        Run the backend independently of the frontend. The Express service
+        exposes the proxy, scheduler, REST control plane, and MCP endpoint so
+        static sites, browser tabs, CLI commands, and external clients can share
+        a local or remote backend.
+      </p>
+      <pre><code># Start services without building or serving a frontend
+npx shadow-claw server</code></pre>
+
+      <h3>Drive Connected Clients</h3>
+      <p>
+        The control plane turns connected browser and Electron clients into
+        remotely addressable execution surfaces. From the CLI, you can list
+        clients, send prompts, inspect scheduled tasks, read client state, and
+        create or manage OPFS workspace backups.
+      </p>
+      <pre><code># Discover and operate connected clients
+npx shadow-claw clients
+npx shadow-claw send "summarize the active workspace" --client &lt;id&gt;
+npx shadow-claw tasks --client &lt;id&gt;
+npx shadow-claw backup
+npx shadow-claw backup list</code></pre>
+
+      <h3>WebMCP &amp; External Agents</h3>
+      <p>
+        In supported browsers, ShadowClaw registers its tool catalog on
+        <code>document.modelContext</code> through WebMCP and routes execution
+        through the Web Worker. External AI clients can use the official MCP
+        server over Streamable HTTP or the CLI STDIO bridge, while connected
+        clients communicate with the control plane over SSE, WebSocket, or
+        peer-to-peer WebRTC DataChannels.
+      </p>
+      <pre><code># Connect an MCP-compatible desktop client over STDIO
+npx shadow-claw mcp
+
+# Start a direct peer-to-peer WebRTC listener
+npx shadow-claw webrtc listen</code></pre>
+
+      <h3>Static Publishing</h3>
+      <p>
+        Content repositories use ShadowClaw's dual-root build pipeline to
+        combine the shared runtime bundles with their own pages, assets,
+        configuration, skills, and tools:
+      </p>
       <pre><code># Start local development server on http://127.0.0.1:8888
 npx shadow-claw dev
 
@@ -270,16 +379,51 @@ npx shadow-claw build --prod</code></pre>
       <h3>Deployment Strategies</h3>
       <ul>
         <li>
-          <strong>Strategy A (Full Fork):</strong> Clone or fork
-          <code>xt-ml/shadow-claw</code> with custom in-repo pages.
+          <strong>Engine repository:</strong>
+          <a href="https://github.com/xt-ml/shadow-claw">xt-ml/shadow-claw</a>
+          is the full ShadowClaw application, CLI, server, and build toolchain.
+          Its own GitHub Pages deployment is the reference app at
+          <a href="https://xt-ml.github.io/shadow-claw/"
+            >xt-ml.github.io/shadow-claw</a
+          >.
         </li>
         <li>
-          <strong>Strategy B (Pages-only Repo):</strong> Content repo that
-          checks out <code>xt-ml/shadow-claw</code> in GitHub Actions CI.
+          <strong>Template repository:</strong>
+          <a href="https://github.com/xt-ml/shadow-claw-template"
+            >xt-ml/shadow-claw-template</a
+          >
+          is the reusable starter for content-only sites. It checks out or
+          invokes ShadowClaw in GitHub Actions and publishes the resulting
+          <code>dist/public</code> directory.
         </li>
         <li>
-          <strong>Strategy C (NPM / CLI):</strong> Fast build directly via
-          <code>npx shadow-claw build --prod</code> in GitHub Actions.
+          <strong>Knowledge hub repositories:</strong>
+          <a href="https://github.com/kherrick/block-garden-knowledge-hub"
+            >block-garden-knowledge-hub</a
+          >
+          and
+          <a href="https://github.com/kherrick/pwgen-knowledge-hub"
+            >pwgen-knowledge-hub</a
+          >
+          are concrete Strategy B/C content projects. They keep pages, assets,
+          declarative skills, and tools in their own repositories while using
+          ShadowClaw's CLI workflow to deploy interactive knowledge hubs.
+        </li>
+        <li>
+          <strong>Headless automation and deployment pattern:</strong>
+          <a href="https://github.com/xt-ml/shadow-claw-agent-cli-weather"
+            >shadow-claw-agent-cli-weather</a
+          >
+          uses the <code>shadow-claw agent</code> runtime directly for scheduled
+          weather retrieval, markdown report generation, and downstream
+          automation pipelines. It is a deployment-ready pattern for generating
+          structured content for other agents, tooling, or publishing systems.
+        </li>
+        <li>
+          <strong>Build modes:</strong> Any content project can preview with
+          <code>npx shadow-claw dev</code> and publish with
+          <code>npx shadow-claw build --prod</code>, either through the template
+          workflow, a pages-only workflow, or a pinned npm/CLI dependency.
         </li>
       </ul>
     </main>
