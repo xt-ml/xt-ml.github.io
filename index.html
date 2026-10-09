@@ -148,6 +148,34 @@
         font-size: 0.95rem;
       }
 
+      .project-card__subpages {
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px solid var(--color-border);
+      }
+
+      .project-card__subpages-heading {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem;
+        color: var(--color-text);
+      }
+
+      .project-card__subpages-list {
+        margin: 0;
+        padding-left: 1.25rem;
+        font-size: 0.9rem;
+      }
+
+      .project-card__subpages-list li {
+        margin-bottom: 0.45rem;
+        color: var(--color-muted);
+      }
+
+      .project-card__subpages-list li a {
+        font-weight: 500;
+      }
+
       pre {
         background-color: var(--color-bg-code);
         border: 1px solid var(--color-border);
@@ -213,6 +241,59 @@
           access, local offline models and cloud LLMs, scheduled tasks, and a
           built-in MCP server bridge.
         </p>
+
+        <div class="project-card__subpages">
+          <h4 class="project-card__subpages-heading">
+            Published Pages &amp; Guides:
+          </h4>
+          <ul class="project-card__subpages-list">
+            <li>
+              <a href="https://xt-ml.github.io/shadow-claw/main/"
+                >ShadowClaw Pages</a
+              >
+              (<code>/main/</code>) — Default workspace landing page and
+              getting-started guide covering persistent agent memory
+              (<code>MEMORY.md</code>), workspace file browsing and editing,
+              page management, and chat settings.
+            </li>
+            <li>
+              <a href="https://xt-ml.github.io/shadow-claw/docs/publishing/"
+                >Publishing to GitHub Pages</a
+              >
+              (<code>/docs/publishing/</code>) — Comprehensive guide detailing
+              automated static-site deployment strategies (full fork,
+              pages-only, and CLI/npm), GitHub Actions workflows, custom
+              domains, and deterministic in-browser Git publishing pipelines.
+            </li>
+            <li>
+              <a href="https://xt-ml.github.io/shadow-claw/docs/skill-creator/"
+                >Agent Skills &amp; Skill Creator</a
+              >
+              (<code>/docs/skill-creator/</code>) — Guide and specification for
+              authoring workspace agent skills and zero-LLM declarative tool
+              pipelines with the <code>/skill-creator</code> command and
+              <code>$pipe</code> data piping.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw/docs/example/article/"
+                >Article Example</a
+              >
+              (<code>/docs/example/article/</code>) — Sample multimedia article
+              demonstration featuring responsive embedded video playback, custom
+              page styling, and Creative Commons licensing attribution.
+            </li>
+            <li>
+              <a href="https://xt-ml.github.io/shadow-claw/main/memory/"
+                >Agent Memory</a
+              >
+              (<code>/main/memory/</code>) — Workspace memory reference
+              documenting folder layout conventions for agent skills
+              (<code>.agents/skills/</code>), declarative JSON tools
+              (<code>.agents/tools/</code>), and YAML frontmatter formats.
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="project-card">
@@ -242,6 +323,38 @@
           websites, knowledge hubs, and custom agent skills driven by the
           ShadowClaw engine.
         </p>
+
+        <div class="project-card__subpages">
+          <h4 class="project-card__subpages-heading">Published Pages:</h4>
+          <ul class="project-card__subpages-list">
+            <li>
+              <a href="https://xt-ml.github.io/shadow-claw-template/main/"
+                >ShadowClaw Template</a
+              >
+              (<code>/main/</code>) — Starter landing page demonstrating how
+              markdown and HTML files authored in <code>pages/main/</code> are
+              automatically pre-rendered into a static site via GitHub Actions.
+            </li>
+            <li>
+              <a href="https://xt-ml.github.io/shadow-claw-template/main/about/"
+                >About</a
+              >
+              (<code>/main/about/</code>) — Overview page illustrating a
+              content-only static site structure and demonstrating inter-page
+              navigation within a ShadowClaw template project.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-template/main/memory/"
+                >Agent Memory</a
+              >
+              (<code>/main/memory/</code>) — Template memory reference outlining
+              workspace conventions for skills, declarative JSON tools, portable
+              ESM scripts (<code>.agents/scripts/</code>), and RFC v0.2.0 Agent
+              Skills discovery.
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="project-card">
