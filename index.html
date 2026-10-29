@@ -299,6 +299,36 @@
       <div class="project-card">
         <div class="project-card__header">
           <h3 class="project-card__title">
+            <a href="https://xt-ml.github.io/shadow-claw-single-file/"
+              >ShadowClaw Single File</a
+            >
+          </h3>
+          <div class="project-card__links">
+            <a href="https://xt-ml.github.io/shadow-claw-single-file/"
+              >Live App</a
+            >
+            ·
+            <a
+              href="https://github.com/xt-ml/shadow-claw-single-file/blob/main/README.md"
+              >README</a
+            >
+            ·
+            <a href="https://github.com/xt-ml/shadow-claw-single-file"
+              >GitHub Repo</a
+            >
+          </div>
+        </div>
+        <p class="project-card__desc">
+          Zero-install, standalone single-file distribution of ShadowClaw
+          encapsulated in a single HTML document (~64 KB). Powered by
+          CDN-delivered modular ESM, browser-native Import Maps, OPFS, and
+          in-browser local AI via WebGPU/WASM and the Prompt API.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card__header">
+          <h3 class="project-card__title">
             <a href="https://xt-ml.github.io/shadow-claw-template/"
               >ShadowClaw Template</a
             >
@@ -597,6 +627,17 @@ npx shadow-claw build --prod</code></pre>
           weather retrieval, markdown report generation, and downstream
           automation pipelines. It is a deployment-ready pattern for generating
           structured content for other agents, tooling, or publishing systems.
+        </li>
+        <li>
+          <strong>Single-file distribution pattern:</strong>
+          <a href="https://github.com/xt-ml/shadow-claw-single-file"
+            >shadow-claw-single-file</a
+          >
+          demonstrates ShadowClaw's Tier 1/Tier 3 standalone deployment
+          strategy, bundling the complete client interface, static pages, and
+          memory scratchpads into a single self-contained
+          <code>index.html</code> file without requiring local build artifacts
+          or multi-file dependencies.
         </li>
         <li>
           <strong>Build modes:</strong> Any content project can preview with
