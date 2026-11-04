@@ -299,6 +299,148 @@
       <div class="project-card">
         <div class="project-card__header">
           <h3 class="project-card__title">
+            <a href="https://xt-ml.github.io/shadow-claw-light-meter/"
+              >TinyDuino LightMeter</a
+            >
+          </h3>
+          <div class="project-card__links">
+            <a href="https://xt-ml.github.io/shadow-claw-light-meter/"
+              >Live App</a
+            >
+            ·
+            <a
+              href="https://github.com/xt-ml/shadow-claw-light-meter/blob/main/README.md"
+              >README</a
+            >
+            ·
+            <a href="https://github.com/xt-ml/shadow-claw-light-meter"
+              >GitHub Repo</a
+            >
+          </div>
+        </div>
+        <p class="project-card__desc">
+          Hardware light meter sensory workbench, Web Bluetooth GATT telemetry
+          engine, declarative WebMCP sensory tools, and autonomous agent skills
+          for TinyDuino (ASM2001) + Bluegiga BLE112 (ASD2112) + KY-018
+          photoresistor.
+        </p>
+
+        <div class="project-card__subpages">
+          <h4 class="project-card__subpages-heading">
+            Published Pages &amp; Guides:
+          </h4>
+          <ul class="project-card__subpages-list">
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/tinyduino/"
+                >Interactive Workbench</a
+              >
+              (<code>/main/tinyduino/</code>) — Real-time Web Bluetooth GATT
+              telemetry workbench with dual-dial SVG gauges, scrolling waveform
+              timeline, and live hardware controls.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/hardware-architecture/"
+                >Hardware Architecture</a
+              >
+              (<code>/main/hardware-architecture/</code>) — 4-layer modular
+              TinyDuino stack breakdown covering ASM2001, ASD2112 BLE112,
+              ASD2101 USB, and ASD2009 Proto board.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/wiring-schematic/"
+                >Wiring &amp; Schematics</a
+              >
+              (<code>/main/wiring-schematic/</code>) — KY-018 3-pin routing, 10k
+              pull-down divider circuit, and 3.3V logic rail safety analysis.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/ble112-bgapi/"
+                >BLE112 BGAPI Protocol</a
+              >
+              (<code>/main/ble112-bgapi/</code>) — Silicon Labs BGAPI protocol
+              specification, GATT handles 17/20, packet structures, and BlueZ
+              CCCD settling delay.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/ky018-calibration/"
+                >Calibration &amp; Physics</a
+              >
+              (<code>/main/ky018-calibration/</code>) — CdS photoconductivity
+              power-law formulas, empirical verification points, and ADC-to-lux
+              estimation curves.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/divider-math/"
+                >Voltage Divider Math &amp; Proof</a
+              >
+              (<code>/main/divider-math/</code>) — Formal electrical derivation
+              and native MathML proof demonstrating High A0 = Bright.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/wokwi-simulation/"
+                >Wokwi Hardware Simulation</a
+              >
+              (<code>/main/wokwi-simulation/</code>) — In-browser simulation
+              with custom C-chip BLE112 emulation and step-by-step deployment
+              guide.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/firmware-guide/"
+                >Firmware Guide</a
+              >
+              (<code>/main/firmware-guide/</code>) — 4x oversampled analog
+              reader, non-blocking telemetry stream rate control, and BGLib host
+              library integration.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/webmcp-tools/"
+                >WebMCP Sensory Tools</a
+              >
+              (<code>/main/webmcp-tools/</code>) — 13 declarative WebMCP tools
+              enabling browser AI agents to read illuminance, toggle LEDs, and
+              stream telemetry.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/agent-skills/"
+                >Agent Skills</a
+              >
+              (<code>/main/agent-skills/</code>) — Autonomous agent skills
+              conforming to the open Agent Skills standard and instant slash
+              commands.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/troubleshooting/"
+                >Troubleshooting &amp; Diagnostics</a
+              >
+              (<code>/main/troubleshooting/</code>) — Diagnostic guide for BlueZ
+              GATT error 133, Web Bluetooth flags, and USB break recovery.
+            </li>
+            <li>
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/main/download-center/"
+                >Download Center</a
+              >
+              (<code>/main/download-center/</code>) — Direct downloads for
+              Arduino sketches, Wokwi simulation files, and JavaScript modules.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card__header">
+          <h3 class="project-card__title">
             <a href="https://xt-ml.github.io/shadow-claw-single-file/"
               >ShadowClaw Single File</a
             >
@@ -627,6 +769,16 @@ npx shadow-claw build --prod</code></pre>
           weather retrieval, markdown report generation, and downstream
           automation pipelines. It is a deployment-ready pattern for generating
           structured content for other agents, tooling, or publishing systems.
+        </li>
+        <li>
+          <strong>Hardware Sensory Workbench pattern:</strong>
+          <a href="https://github.com/xt-ml/shadow-claw-light-meter"
+            >shadow-claw-light-meter</a
+          >
+          demonstrates integrating physical microcontroller hardware (TinyDuino,
+          Bluegiga BLE112, KY-018 photoresistor) with Web Bluetooth GATT and
+          declarative WebMCP tools, exposing instant slash commands without LLM
+          latency.
         </li>
         <li>
           <strong>Single-file distribution pattern:</strong>
