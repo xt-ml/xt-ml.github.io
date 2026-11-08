@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
   <head>
     <title>xt-ml.github.io</title>
     <meta charset="utf-8" />
@@ -11,6 +11,7 @@
       name="description"
       content="Projects, documentation, and static deployments from the xt-ml organization."
     />
+    <meta name="theme-color" content="#0969da" />
     <link
       rel="icon"
       type="image/x-icon"
@@ -20,28 +21,126 @@
       rel="apple-touch-icon"
       href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEUAAACnej3aAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
     />
+
+    <!-- Google Fonts & Material Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <!-- Material Design Lite Core Tokens, Colors & Component Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://kherrick.github.io/material-design-lite/css/tokens.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://kherrick.github.io/material-design-lite/css/colors.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://kherrick.github.io/material-design-lite/css/mdl.css"
+    />
+
     <style>
-      :root {
-        --color-text: #1a1a1a;
-        --color-muted: #666;
-        --color-border: #e1e4e8;
-        --color-bg-code: #f6f8fa;
-        --color-link: #0969da;
-        --color-link-hover: #0550ae;
+      /* Light Mode Material Design Tokens (xt-ml clean palette) */
+      :root,
+      html,
+      body,
+      html.light-theme,
+      body.light-theme {
+        color-scheme: light;
+        --md-sys-color-background: #ffffff;
+        --md-sys-color-on-background: #1f2328;
+        --md-sys-color-surface: #ffffff;
+        --md-sys-color-on-surface: #1f2328;
+        --md-sys-color-surface-variant: #f6f8fa;
+        --md-sys-color-on-surface-variant: #57606a;
+        --md-sys-color-outline: #d0d7de;
+        --md-sys-color-outline-variant: #e1e4e8;
+        --md-sys-color-primary: rgb(var(--md-ref-palette-primary40-rgb, 9 105 218));
+        --md-sys-color-on-primary: rgb(var(--md-ref-palette-primary100-rgb, 255 255 255));
+        --md-sys-color-primary-container: rgb(var(--md-ref-palette-primary90-rgb, 221 244 255));
+        --md-sys-color-on-primary-container: rgb(var(--md-ref-palette-primary10-rgb, 9 105 218));
+        --md-sys-color-secondary: rgb(var(--md-ref-palette-primary40-rgb, 9 105 218));
+        --md-sys-color-secondary-container: rgb(var(--md-ref-palette-primary90-rgb, 221 244 255));
+        --md-sys-color-on-secondary-container: rgb(var(--md-ref-palette-primary10-rgb, 9 105 218));
+        --md-sys-shape-corner-small: 8px;
+        --md-sys-shape-corner-medium: 10px;
+        --md-sys-shape-corner-large: 16px;
+        background-color: var(--md-sys-color-background);
+        color: var(--md-sys-color-on-background);
       }
 
+      /* Dark Mode Material Design Tokens (xt-ml clean palette) */
+      :root.dark-theme,
+      html.dark-theme,
+      body.dark-theme {
+        color-scheme: dark;
+        --md-sys-color-background: #0d1117;
+        --md-sys-color-on-background: #e6edf3;
+        --md-sys-color-surface: #161b22;
+        --md-sys-color-on-surface: #e6edf3;
+        --md-sys-color-surface-variant: #21262d;
+        --md-sys-color-on-surface-variant: #8b949e;
+        --md-sys-color-outline: #30363d;
+        --md-sys-color-outline-variant: #30363d;
+        --md-sys-color-primary: rgb(var(--md-ref-palette-primary80-rgb, 88 166 255));
+        --md-sys-color-on-primary: rgb(var(--md-ref-palette-primary20-rgb, 13 17 23));
+        --md-sys-color-primary-container: rgb(var(--md-ref-palette-primary30-rgb, 27 56 94));
+        --md-sys-color-on-primary-container: rgb(var(--md-ref-palette-primary90-rgb, 200 225 255));
+        --md-sys-color-secondary: rgb(var(--md-ref-palette-primary80-rgb, 88 166 255));
+        --md-sys-color-secondary-container: rgb(var(--md-ref-palette-primary30-rgb, 27 56 94));
+        --md-sys-color-on-secondary-container: rgb(var(--md-ref-palette-primary90-rgb, 200 225 255));
+        background-color: var(--md-sys-color-background);
+        color: var(--md-sys-color-on-background);
+      }
+
+      /* Automatic OS Dark Preference */
       @media (prefers-color-scheme: dark) {
-        :root {
-          --color-text: #e6edf3;
-          --color-muted: #8b949e;
-          --color-border: #30363d;
-          --color-bg-code: #161b22;
-          --color-link: #58a6ff;
-          --color-link-hover: #79c0ff;
+        :root:not(.light-theme),
+        html:not(.light-theme),
+        body:not(.light-theme) {
+          color-scheme: dark;
+          --md-sys-color-background: #0d1117;
+          --md-sys-color-on-background: #e6edf3;
+          --md-sys-color-surface: #161b22;
+          --md-sys-color-on-surface: #e6edf3;
+          --md-sys-color-surface-variant: #21262d;
+          --md-sys-color-on-surface-variant: #8b949e;
+          --md-sys-color-outline: #30363d;
+          --md-sys-color-outline-variant: #30363d;
+          --md-sys-color-primary: rgb(var(--md-ref-palette-primary80-rgb, 88 166 255));
+          --md-sys-color-on-primary: rgb(var(--md-ref-palette-primary20-rgb, 13 17 23));
+          --md-sys-color-primary-container: rgb(var(--md-ref-palette-primary30-rgb, 27 56 94));
+          --md-sys-color-on-primary-container: rgb(var(--md-ref-palette-primary90-rgb, 200 225 255));
+          --md-sys-color-secondary: rgb(var(--md-ref-palette-primary80-rgb, 88 166 255));
+          --md-sys-color-secondary-container: rgb(var(--md-ref-palette-primary30-rgb, 27 56 94));
+          --md-sys-color-on-secondary-container: rgb(var(--md-ref-palette-primary90-rgb, 200 225 255));
+          background-color: var(--md-sys-color-background);
+          color: var(--md-sys-color-on-background);
         }
-        body {
-          background-color: #0d1117;
-        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        background-color: var(--md-sys-color-background);
+        color: var(--md-sys-color-on-background);
+        min-height: 100%;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
       }
 
       body {
@@ -59,53 +158,152 @@
           sans-serif;
         line-height: 1.6;
         margin: auto;
-        max-width: 52rem;
-        padding: 2rem 1.5rem 4rem;
-        color: var(--color-text);
+        max-width: 54rem;
+        padding: 1.5rem 1.5rem 4rem;
+        background-color: var(--md-sys-color-background);
+        color: var(--md-sys-color-on-background);
+        min-height: 100vh;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+      }
       }
 
-      header {
-        margin-bottom: 2.5rem;
-        border-bottom: 1px solid var(--color-border);
-        padding-bottom: 1rem;
+      /* Accessible Skip Link */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+        padding: 8px 16px;
+        z-index: 1000;
+        text-decoration: none;
+        border-radius: 0 0 6px 0;
+        font-weight: 600;
       }
 
-      .header-title {
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* Material Design Lite Top App Bar Header */
+      header.top-app-bar {
+        background-color: transparent;
+        color: var(--md-sys-color-on-background);
+        padding: 0 0 1.25rem 0;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--md-sys-color-outline);
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        margin: 0;
-        font-size: 1.75rem;
-        font-weight: 700;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
       }
 
-      .header-title a {
-        color: var(--color-text);
+      .top-app-bar__branding {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .top-app-bar__title {
+        margin: 0;
+        font-size: 1.85rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .top-app-bar__title a {
+        color: var(--md-sys-color-on-background);
         text-decoration: none;
       }
 
-      .header-subtitle {
-        color: var(--color-muted);
+      .top-app-bar__title a:hover {
+        color: var(--md-sys-color-primary);
+        text-decoration: none;
+      }
+
+      .top-app-bar__subtitle {
+        color: var(--md-sys-color-on-surface-variant);
         margin: 0.5rem 0 0;
         font-size: 1rem;
       }
 
-      h2 {
-        font-size: 1.35rem;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid var(--color-border);
-        padding-bottom: 0.4rem;
+      .top-app-bar__actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
       }
 
-      h3 {
-        font-size: 1.1rem;
+      /* Material Design Lite Icon Button */
+      .icon-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--md-sys-color-outline);
+        background: transparent;
+        color: var(--md-sys-color-on-surface);
+        cursor: pointer;
+        transition:
+          background-color 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .icon-button:hover,
+      .icon-button:focus-visible {
+        background-color: var(--md-sys-color-surface-variant);
+        border-color: var(--md-sys-color-primary);
+        color: var(--md-sys-color-primary);
+        outline: 2px solid var(--md-sys-color-primary);
+        outline-offset: 2px;
+      }
+
+      .icon-button i.material-icons {
+        font-size: 20px;
+      }
+
+      /* Headings */
+      h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--md-sys-color-outline);
+        padding-bottom: 0.4rem;
+        color: var(--md-sys-color-on-background);
+      }
+
+      h3.category-heading {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-top: 1.75rem;
+        margin-bottom: 0.85rem;
+        color: var(--md-sys-color-on-background);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      h3.category-heading i.material-icons {
+        color: var(--md-sys-color-primary);
+        font-size: 20px;
+      }
+
+      h4 {
+        font-size: 1.05rem;
+        font-weight: 600;
         margin-top: 1.25rem;
         margin-bottom: 0.5rem;
+        color: var(--md-sys-color-on-background);
       }
 
       a {
-        color: var(--color-link);
+        color: var(--md-sys-color-primary);
         text-decoration: none;
       }
 
@@ -114,51 +312,104 @@
         text-decoration: underline;
       }
 
-      .project-card {
-        border: 1px solid var(--color-border);
-        border-radius: 6px;
+      a:focus-visible {
+        outline: 2px solid var(--md-sys-color-primary);
+        outline-offset: 2px;
+      }
+
+      /* Material Design Lite Card Component (.card.outlined) */
+      .project-card.card.outlined {
+        background-color: var(--md-sys-color-surface);
+        color: var(--md-sys-color-on-surface);
+        border: 1px solid var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-medium, 10px);
         padding: 1.25rem;
         margin-bottom: 1.25rem;
+        min-width: 0;
+        box-shadow: none;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .project-card.card.outlined:hover {
+        border-color: var(--md-sys-color-primary);
+        box-shadow: var(--md-sys-elevation-1);
       }
 
       .project-card__header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.65rem;
         margin-bottom: 0.5rem;
       }
 
       .project-card__title {
         font-size: 1.2rem;
-        font-weight: 600;
+        font-weight: 700;
         margin: 0;
+        padding: 0;
+        line-height: 1.3;
       }
 
-      .project-card__links {
+      .project-card__title a {
+        color: var(--md-sys-color-primary);
+      }
+
+      /* Material Design Lite Button in Card Actions */
+      .project-card__actions {
         display: flex;
-        gap: 0.75rem;
+        align-items: center;
+        gap: 0.35rem;
         font-size: 0.9rem;
       }
 
+      .project-card__actions .button.text {
+        height: 32px;
+        padding: 0 6px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--md-sys-color-primary);
+        text-decoration: none;
+        background: transparent;
+        border: none;
+        border-radius: var(--md-sys-shape-corner-small);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .project-card__actions .button.text:hover,
+      .project-card__actions .button.text:focus-visible {
+        background-color: rgba(var(--md-ref-palette-primary40-rgb), 0.1);
+        text-decoration: underline;
+      }
+
+      .project-card__actions .sep {
+        color: var(--md-sys-color-outline);
+      }
+
       .project-card__desc {
-        color: var(--color-muted);
+        color: var(--md-sys-color-on-surface-variant);
         margin: 0;
         font-size: 0.95rem;
+        line-height: 1.6;
+        padding: 0;
       }
 
       .project-card__subpages {
         margin-top: 1rem;
         padding-top: 0.85rem;
-        border-top: 1px solid var(--color-border);
+        border-top: 1px solid var(--md-sys-color-outline-variant);
       }
 
       .project-card__subpages-heading {
         font-size: 0.95rem;
         font-weight: 600;
         margin: 0 0 0.5rem;
-        color: var(--color-text);
+        color: var(--md-sys-color-on-surface);
       }
 
       .project-card__subpages-list {
@@ -169,32 +420,51 @@
 
       .project-card__subpages-list li {
         margin-bottom: 0.45rem;
-        color: var(--color-muted);
+        color: var(--md-sys-color-on-surface-variant);
+        line-height: 1.55;
+      }
+
+      .project-card__subpages-list li:last-child {
+        margin-bottom: 0;
       }
 
       .project-card__subpages-list li a {
         font-weight: 500;
+        color: var(--md-sys-color-primary);
       }
 
+      /* Code Blocks & Monospace */
       pre {
-        background-color: var(--color-bg-code);
-        border: 1px solid var(--color-border);
-        border-radius: 6px;
+        background-color: var(--md-sys-color-surface-variant);
+        color: var(--md-sys-color-on-surface);
+        border: 1px solid var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-small, 8px);
         padding: 0.85rem 1rem;
         overflow-x: auto;
         font-size: 0.875rem;
         line-height: 1.45;
+        margin: 0.75rem 0 1.25rem;
       }
 
       code {
         font-family:
           ui-monospace,
           SFMono-Regular,
-          SF Mono,
+          "SF Mono",
           Menlo,
           Consolas,
-          Liberation Mono,
+          "Liberation Mono",
           monospace;
+        font-size: 0.88em;
+      }
+
+      p code,
+      li code {
+        background-color: var(--md-sys-color-surface-variant);
+        color: var(--md-sys-color-on-surface);
+        border: 1px solid var(--md-sys-color-outline-variant);
+        padding: 0.12rem 0.35rem;
+        border-radius: 4px;
       }
 
       ul {
@@ -204,471 +474,1106 @@
       li {
         margin-bottom: 0.35rem;
       }
+
+      /* Material Theme Customizer Drawer (MDL Options Port) */
+      .options {
+        display: none;
+      }
+
+      .options.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 340px;
+        max-width: 90vw;
+        height: 100%;
+        z-index: 1100;
+        overflow-y: auto;
+        background-color: var(--md-sys-color-surface);
+        color: var(--md-sys-color-on-surface);
+        border-left: 1px solid var(--md-sys-color-outline);
+        box-shadow: -4px 0 28px rgba(0, 0, 0, 0.35);
+        animation: slide-in 0.25s cubic-bezier(0, 0, 0.2, 1);
+        padding: 1.5rem;
+      }
+
+      @keyframes slide-in {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      .theme-backdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1050;
+        backdrop-filter: blur(2px);
+      }
+
+      .theme-backdrop.open {
+        display: block;
+      }
+
+      .options .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--md-sys-color-outline);
+        margin-bottom: 1.25rem;
+      }
+
+      .options h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--md-sys-color-on-surface);
+      }
+
+      .options h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 1.25rem 0 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      /* Color selection aligned to the left of the drawer to prevent native popup clipping */
+      .color-picker-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.85rem;
+        margin-bottom: 0.85rem;
+      }
+
+      .color-picker-control {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      #source {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 44px;
+        height: 38px;
+        background-color: transparent;
+        border: 1px solid var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-small, 8px);
+        cursor: pointer;
+        padding: 2px;
+      }
+
+      #source::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+
+      #source::-webkit-color-swatch {
+        border-radius: 5px;
+        border: none;
+      }
+
+      #source::-moz-color-swatch {
+        border-radius: 5px;
+        border: none;
+      }
+
+      #source-hex {
+        font-family: monospace;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--md-sys-color-on-surface);
+      }
+
+      .color-picker-row label {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface);
+      }
+
+      /* Quick-select color swatches */
+      .color-presets {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .preset-chip {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2px solid var(--md-sys-color-outline);
+        background-color: var(--chip-color);
+        cursor: pointer;
+        padding: 0;
+        transition:
+          transform 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .preset-chip:hover,
+      .preset-chip:focus-visible {
+        transform: scale(1.15);
+        border-color: var(--md-sys-color-on-surface);
+        outline: none;
+      }
+
+      /* Material Design Lite Segmented Button (High Contrast & Complete Accessibility) */
+      .segmented-button {
+        width: 100%;
+        display: flex;
+        border: 1px solid var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-small, 8px);
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+        background-color: var(--md-sys-color-surface-variant);
+        height: 42px;
+        position: relative;
+      }
+
+      .segmented-button input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+        height: 0;
+      }
+
+      .segmented-button label {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0 12px;
+        font-size: 0.925rem;
+        font-weight: 500;
+        cursor: pointer;
+        background-color: transparent;
+        color: var(--md-sys-color-on-surface) !important;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+        user-select: none;
+      }
+
+      .segmented-button label * {
+        color: inherit !important;
+      }
+
+      .segmented-button label i.material-icons {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: inherit !important;
+      }
+
+      .segmented-button label span {
+        flex-shrink: 0;
+        color: inherit !important;
+      }
+
+      .segmented-button label:not(:last-child) {
+        border-right: 1px solid var(--md-sys-color-outline);
+      }
+
+      .segmented-button input[type="radio"]:checked + label {
+        background-color: var(--md-sys-color-primary) !important;
+        color: var(--md-sys-color-on-primary) !important;
+        font-weight: 600;
+      }
+
+      .segmented-button input[type="radio"]:checked + label * {
+        color: var(--md-sys-color-on-primary) !important;
+      }
+
+      .segmented-button input[type="radio"]:focus-visible + label {
+        outline: 2px solid var(--md-sys-color-primary);
+        outline-offset: -2px;
+      }
+
+      /* Material Design Lite Shape Range Sliders */
+      .shape-slider-group {
+        margin-bottom: 0.85rem;
+      }
+
+      .shape-slider-group__header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      .slider {
+        width: 100%;
+        accent-color: var(--md-sys-color-primary);
+        cursor: pointer;
+      }
+
+      /* Material Design Lite Outlined Reset Button */
+      #reset-theme.button.outlined {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--md-sys-shape-corner-small, 8px);
+        border: 1px solid var(--md-sys-color-outline);
+        background-color: transparent;
+        color: #cf222e;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        margin-top: 1.5rem;
+        transition:
+          background-color 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      #reset-theme.button.outlined:hover,
+      #reset-theme.button.outlined:focus-visible {
+        background-color: rgba(207, 34, 46, 0.1);
+        border-color: #cf222e;
+        outline: 2px solid #cf222e;
+      }
+
+      /* Material Design Lite Clean Site Footer */
+      footer.site-footer {
+        margin-top: 4rem;
+        border-top: 1px solid var(--md-sys-color-outline);
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        font-size: 0.875rem;
+        color: var(--md-sys-color-on-surface-variant);
+        background-color: transparent;
+      }
+
+      .site-footer__links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .site-footer__links a {
+        color: var(--md-sys-color-primary);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .site-footer__links a:hover,
+      .site-footer__links a:focus-visible {
+        text-decoration: underline;
+      }
+
+      .site-footer__links .sep {
+        color: var(--md-sys-color-outline);
+      }
+
+      .site-footer__meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        font-size: 0.8125rem;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+
+      /* Mobile Adjustments */
+      @media (max-width: 600px) {
+        body {
+          padding: 1.25rem 1rem 3rem;
+        }
+
+        .top-app-bar__title {
+          font-size: 1.55rem;
+        }
+
+        .project-card.card.outlined {
+          padding: 1rem;
+        }
+
+        .project-card__header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.35rem;
+        }
+
+        footer.site-footer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+
+    <!-- Material Design Lite Dynamic Tokens & Overrides -->
+    <style id="dynamic-theme" data-theme="">
+      :root,
+      html,
+      body {
+        --md-source: #0969da;
+        --md-ref-palette-primary100-rgb: 255 255 255;
+        --md-ref-palette-primary99-rgb: 254 251 255;
+        --md-ref-palette-primary98-rgb: 249 249 255;
+        --md-ref-palette-primary95-rgb: 237 240 255;
+        --md-ref-palette-primary90-rgb: 216 226 255;
+        --md-ref-palette-primary80-rgb: 88 166 255;
+        --md-ref-palette-primary70-rgb: 74 142 255;
+        --md-ref-palette-primary60-rgb: 35 116 229;
+        --md-ref-palette-primary50-rgb: 9 105 218;
+        --md-ref-palette-primary40-rgb: 9 105 218;
+        --md-ref-palette-primary35-rgb: 0 79 169;
+        --md-ref-palette-primary30-rgb: 0 68 147;
+        --md-ref-palette-primary25-rgb: 0 57 125;
+        --md-ref-palette-primary20-rgb: 0 46 104;
+        --md-ref-palette-primary10-rgb: 0 26 65;
+        --md-ref-palette-primary5-rgb: 0 16 45;
+        --md-ref-palette-primary0-rgb: 0 0 0;
+      }
     </style>
   </head>
 
   <body>
-    <header>
-      <div class="header-title">
-        <a href="https://xt-ml.github.io/">xt-ml.github.io</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Material Design Lite Top App Bar Header -->
+    <header class="top-app-bar" role="banner">
+      <div class="top-app-bar__branding">
+        <h1 class="top-app-bar__title">
+          <a href="https://xt-ml.github.io/">xt-ml.github.io</a>
+        </h1>
+        <p class="top-app-bar__subtitle">
+          Projects, documentation, and static deployments from the
+          <strong>xt-ml</strong> organization.
+        </p>
       </div>
-      <p class="header-subtitle">
-        Projects, documentation, and static deployments from the
-        <strong>xt-ml</strong> organization.
-      </p>
+      <div class="top-app-bar__actions">
+        <a
+          class="icon-button"
+          href="https://github.com/xt-ml"
+          target="_blank"
+          rel="noopener"
+          aria-label="View xt-ml on GitHub"
+          title="View xt-ml on GitHub"
+        >
+          <i class="material-icons" aria-hidden="true">open_in_new</i>
+        </a>
+        <button
+          id="options"
+          class="icon-button"
+          type="button"
+          aria-label="Customize Material Theme"
+          title="Material Theme Options"
+        >
+          <i class="material-icons" aria-hidden="true">palette</i>
+        </button>
+      </div>
     </header>
 
-    <main>
-      <h2>Published Projects & Sites</h2>
+    <main id="main-content" role="main">
+      <h2>Published Projects &amp; Sites</h2>
 
-      <div class="project-card">
-        <div class="project-card__header">
-          <h3 class="project-card__title">
-            <a href="https://xt-ml.github.io/shadow-claw/">ShadowClaw</a>
-          </h3>
-          <div class="project-card__links">
-            <a href="https://xt-ml.github.io/shadow-claw/">Live App</a> ·
-            <a href="https://github.com/xt-ml/shadow-claw/blob/main/README.md"
-              >README</a
-            >
-            ·
-            <a href="https://github.com/xt-ml/shadow-claw">GitHub Repo</a>
-          </div>
-        </div>
-        <p class="project-card__desc">
-          Personal AI agent that runs natively in the terminal, on mobile,
-          desktop, and in the browser. Features real shell and filesystem
-          access, local offline models and cloud LLMs, scheduled tasks, and a
-          built-in MCP server bridge.
-        </p>
+      <!-- Group 1: Core Assistant & Standalone Runtimes -->
+      <section aria-labelledby="core-heading">
+        <h3 id="core-heading" class="category-heading">
+          <i class="material-icons" aria-hidden="true">smart_toy</i>
+          <span>Core Assistant &amp; Standalone Runtimes</span>
+        </h3>
 
-        <div class="project-card__subpages">
-          <h4 class="project-card__subpages-heading">
-            Published Pages &amp; Guides:
-          </h4>
-          <ul class="project-card__subpages-list">
-            <li>
-              <a href="https://xt-ml.github.io/shadow-claw/main/"
-                >ShadowClaw Pages</a
+        <!-- ShadowClaw -->
+        <article
+          class="card outlined project-card"
+          aria-labelledby="proj-shadow-claw"
+        >
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-shadow-claw">
+              <a href="https://xt-ml.github.io/shadow-claw/">ShadowClaw</a>
+            </h4>
+            <div class="project-card__actions">
+              <a href="https://xt-ml.github.io/shadow-claw/" class="button text"
+                >Live App</a
               >
-              (<code>/main/</code>) — Default workspace landing page and
-              getting-started guide covering persistent agent memory
-              (<code>MEMORY.md</code>), workspace file browsing and editing,
-              page management, and chat settings.
-            </li>
-            <li>
-              <a href="https://xt-ml.github.io/shadow-claw/docs/publishing/"
-                >Publishing to GitHub Pages</a
-              >
-              (<code>/docs/publishing/</code>) — Comprehensive guide detailing
-              automated static-site deployment strategies (full fork,
-              pages-only, and CLI/npm), GitHub Actions workflows, custom
-              domains, and deterministic in-browser Git publishing pipelines.
-            </li>
-            <li>
-              <a href="https://xt-ml.github.io/shadow-claw/docs/skill-creator/"
-                >Agent Skills &amp; Skill Creator</a
-              >
-              (<code>/docs/skill-creator/</code>) — Guide and specification for
-              authoring workspace agent skills and zero-LLM declarative tool
-              pipelines with the <code>/skill-creator</code> command and
-              <code>$pipe</code> data piping.
-            </li>
-            <li>
+              <span class="sep" aria-hidden="true">·</span>
               <a
-                href="https://xt-ml.github.io/shadow-claw/docs/example/article/"
-                >Article Example</a
+                href="https://github.com/xt-ml/shadow-claw/blob/main/README.md"
+                class="button text"
+                >README</a
               >
-              (<code>/docs/example/article/</code>) — Sample multimedia article
-              demonstration featuring responsive embedded video playback, custom
-              page styling, and Creative Commons licensing attribution.
-            </li>
-            <li>
-              <a href="https://xt-ml.github.io/shadow-claw/main/memory/"
-                >Agent Memory</a
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="https://github.com/xt-ml/shadow-claw" class="button text"
+                >GitHub Repo</a
               >
-              (<code>/main/memory/</code>) — Workspace memory reference
-              documenting folder layout conventions for agent skills
-              (<code>.agents/skills/</code>), declarative JSON tools
-              (<code>.agents/tools/</code>), and YAML frontmatter formats.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-card__header">
-          <h3 class="project-card__title">
-            <a href="https://xt-ml.github.io/shadow-claw-single-file/"
-              >ShadowClaw Single File</a
-            >
-          </h3>
-          <div class="project-card__links">
-            <a href="https://xt-ml.github.io/shadow-claw-single-file/"
-              >Live App</a
-            >
-            ·
-            <a
-              href="https://github.com/xt-ml/shadow-claw-single-file/blob/main/README.md"
-              >README</a
-            >
-            ·
-            <a href="https://github.com/xt-ml/shadow-claw-single-file"
-              >GitHub Repo</a
-            >
+            </div>
           </div>
-        </div>
-        <p class="project-card__desc">
-          Zero-install, standalone single-file distribution of ShadowClaw
-          encapsulated in a single HTML document (~64 KB). Powered by
-          CDN-delivered modular ESM, browser-native Import Maps, OPFS, and
-          in-browser local AI via WebGPU/WASM and the Prompt API.
-        </p>
-      </div>
+          <p class="subtitle project-card__desc">
+            Personal AI agent that runs natively in the terminal, on mobile,
+            desktop, and in the browser. Features real shell and filesystem
+            access, local offline models and cloud LLMs, scheduled tasks, and a
+            built-in MCP server bridge.
+          </p>
 
-      <div class="project-card">
-        <div class="project-card__header">
-          <h3 class="project-card__title">
-            <a href="https://xt-ml.github.io/shadow-claw-template/"
-              >ShadowClaw Template</a
-            >
-          </h3>
-          <div class="project-card__links">
-            <a href="https://xt-ml.github.io/shadow-claw-template/"
-              >Live Preview</a
-            >
-            ·
-            <a
-              href="https://github.com/xt-ml/shadow-claw-template/blob/main/README.md"
-              >README</a
-            >
-            ·
-            <a href="https://github.com/xt-ml/shadow-claw-template"
-              >GitHub Repo</a
-            >
+          <div class="project-card__subpages">
+            <h5 class="project-card__subpages-heading">
+              Published Pages &amp; Guides:
+            </h5>
+            <ul class="project-card__subpages-list">
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw/main/"
+                  >ShadowClaw Pages</a
+                >
+                (<code>/main/</code>) — Default workspace landing page and
+                getting-started guide covering persistent agent memory
+                (<code>MEMORY.md</code>), workspace file browsing and editing,
+                page management, and chat settings.
+              </li>
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw/docs/publishing/"
+                  >Publishing to GitHub Pages</a
+                >
+                (<code>/docs/publishing/</code>) — Comprehensive guide detailing
+                automated static-site deployment strategies (full fork,
+                pages-only, and CLI/npm), GitHub Actions workflows, custom
+                domains, and deterministic in-browser Git publishing pipelines.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw/docs/skill-creator/"
+                  >Agent Skills &amp; Skill Creator</a
+                >
+                (<code>/docs/skill-creator/</code>) — Guide and specification
+                for authoring workspace agent skills and zero-LLM declarative
+                tool pipelines with the <code>/skill-creator</code> command and
+                <code>$pipe</code> data piping.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw/docs/example/article/"
+                  >Article Example</a
+                >
+                (<code>/docs/example/article/</code>) — Sample multimedia
+                article demonstration featuring responsive embedded video
+                playback, custom page styling, and Creative Commons licensing
+                attribution.
+              </li>
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw/main/memory/"
+                  >Agent Memory</a
+                >
+                (<code>/main/memory/</code>) — Workspace memory reference
+                documenting folder layout conventions for agent skills
+                (<code>.agents/skills/</code>), declarative JSON tools
+                (<code>.agents/tools/</code>), and YAML frontmatter formats.
+              </li>
+            </ul>
           </div>
-        </div>
-        <p class="project-card__desc">
-          Starter template repository for authoring and deploying static
-          websites, knowledge hubs, and custom agent skills driven by the
-          ShadowClaw engine.
-        </p>
+        </article>
 
-        <div class="project-card__subpages">
-          <h4 class="project-card__subpages-heading">Published Pages:</h4>
-          <ul class="project-card__subpages-list">
-            <li>
-              <a href="https://xt-ml.github.io/shadow-claw-template/main/"
+        <!-- ShadowClaw Single File -->
+        <article
+          class="card outlined project-card"
+          aria-labelledby="proj-single-file"
+        >
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-single-file">
+              <a href="https://xt-ml.github.io/shadow-claw-single-file/"
+                >ShadowClaw Single File</a
+              >
+            </h4>
+            <div class="project-card__actions">
+              <a
+                href="https://xt-ml.github.io/shadow-claw-single-file/"
+                class="button text"
+                >Live App</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-single-file/blob/main/README.md"
+                class="button text"
+                >README</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-single-file"
+                class="button text"
+                >GitHub Repo</a
+              >
+            </div>
+          </div>
+          <p class="subtitle project-card__desc">
+            Zero-install, standalone single-file distribution of ShadowClaw
+            encapsulated in a single HTML document (~64 KB). Powered by
+            CDN-delivered modular ESM, browser-native Import Maps, OPFS, and
+            in-browser local AI via WebGPU/WASM and the Prompt API.
+          </p>
+        </article>
+      </section>
+
+      <!-- Group 2: Interactive Creative & Hardware Workbenches -->
+      <section aria-labelledby="workbenches-heading">
+        <h3 id="workbenches-heading" class="category-heading">
+          <i class="material-icons" aria-hidden="true">handyman</i>
+          <span>Interactive Creative &amp; Hardware Workbenches</span>
+        </h3>
+
+        <!-- ShadowClaw DAW -->
+        <article class="card outlined project-card" aria-labelledby="proj-daw">
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-daw">
+              <a href="https://xt-ml.github.io/shadow-claw-daw/"
+                >ShadowClaw DAW</a
+              >
+            </h4>
+            <div class="project-card__actions">
+              <a
+                href="https://xt-ml.github.io/shadow-claw-daw/"
+                class="button text"
+                >Live App</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-daw/blob/main/README.md"
+                class="button text"
+                >README</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-daw"
+                class="button text"
+                >GitHub Repo</a
+              >
+            </div>
+          </div>
+          <p class="subtitle project-card__desc">
+            In-browser Digital Audio Workstation (DAW) workbench and Web Audio
+            API synthesis engine powered by ShadowClaw. Features TC39-shaped
+            reactive Signals, Web Components
+            (<code>&lt;scdaw-workbench&gt;</code>,
+            <code>&lt;scdaw-transport&gt;</code>,
+            <code>&lt;scdaw-mixer&gt;</code>,
+            <code>&lt;scdaw-sequencer&gt;</code>), 15 declarative
+            <code>scdaw_*</code> WebMCP audio tools, autonomous musical agent
+            skills, Web Locks leader election, and high-speed offline WAV
+            rendering.
+          </p>
+
+          <div class="project-card__subpages">
+            <h5 class="project-card__subpages-heading">
+              Published Pages &amp; Guides:
+            </h5>
+            <ul class="project-card__subpages-list">
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw-daw/main/"
+                  >Interactive Workbench</a
+                >
+                (<code>/main/</code>) — Direct-rendered pinned DAW workbench
+                (<code>scdaw.html</code>), transport controls, multi-track
+                mixer, step sequencer, and audio graph visualizers.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-daw/main/architecture/"
+                  >Audio Architecture</a
+                >
+                (<code>/main/architecture/</code>) — Subsystem architecture
+                separating pure musical logic, lookahead scheduling, Web Locks
+                leader election (<code>scdaw-engine</code>), and Web Audio API
+                lifecycle management.
+              </li>
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw-daw/main/tools/"
+                  >Declarative WebMCP Tools</a
+                >
+                (<code>/main/tools/</code>) — 15 declarative
+                <code>scdaw_*</code> WebMCP tools for synthesis patching, track
+                sequencing, pattern automation, channel mixing, and master bus
+                control.
+              </li>
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw-daw/main/skills/"
+                  >Autonomous Agent Skills</a
+                >
+                (<code>/main/skills/</code>) — Declarative agent workflows
+                conforming to the Agent Skills standard: <code>/beat</code>,
+                <code>/jam</code>, <code>/mixdown</code>, <code>/bounce</code>,
+                <code>/scdaw-status</code>, and <code>/scdaw-doctor</code>.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-daw/main/workbench/"
+                  >Reactive UI Components</a
+                >
+                (<code>/main/workbench/</code>) — Component reference for custom
+                elements synchronized via microtask-batched Signals and Web
+                Worker IPC bridges.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-daw/main/porting-and-attribution/"
+                  >Porting &amp; Attribution</a
+                >
+                (<code>/main/porting-and-attribution/</code>) — Provenance,
+                sound generator architecture, and AGPLv3 licensing details.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-daw/main/troubleshooting/"
+                  >Troubleshooting &amp; Diagnostics</a
+                >
+                (<code>/main/troubleshooting/</code>) — AudioContext user
+                gesture requirements, Web Locks leader election recovery, and
+                latency tuning.
+              </li>
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw-daw/main/memory/"
+                  >Agent Memory</a
+                >
+                (<code>/main/memory/</code>) — Workspace memory conventions,
+                tool JSON manifests, and assistant persona definitions
+                (<code>Daw</code>).
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- TinyDuino LightMeter -->
+        <article
+          class="card outlined project-card"
+          aria-labelledby="proj-light-meter"
+        >
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-light-meter">
+              <a href="https://xt-ml.github.io/shadow-claw-light-meter/"
+                >TinyDuino LightMeter</a
+              >
+            </h4>
+            <div class="project-card__actions">
+              <a
+                href="https://xt-ml.github.io/shadow-claw-light-meter/"
+                class="button text"
+                >Live App</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-light-meter/blob/main/README.md"
+                class="button text"
+                >README</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-light-meter"
+                class="button text"
+                >GitHub Repo</a
+              >
+            </div>
+          </div>
+          <p class="subtitle project-card__desc">
+            Hardware light meter sensory workbench, Web Bluetooth GATT telemetry
+            engine, declarative WebMCP sensory tools, and autonomous agent
+            skills for TinyDuino (ASM2001) + Bluegiga BLE112 (ASD2112) + KY-018
+            photoresistor.
+          </p>
+
+          <div class="project-card__subpages">
+            <h5 class="project-card__subpages-heading">
+              Published Pages &amp; Guides:
+            </h5>
+            <ul class="project-card__subpages-list">
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/tinyduino/"
+                  >Interactive Workbench</a
+                >
+                (<code>/main/tinyduino/</code>) — Real-time Web Bluetooth GATT
+                telemetry workbench with dual-dial SVG gauges, scrolling
+                waveform timeline, and live hardware controls.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/hardware-architecture/"
+                  >Hardware Architecture</a
+                >
+                (<code>/main/hardware-architecture/</code>) — 4-layer modular
+                TinyDuino stack breakdown covering ASM2001, ASD2112 BLE112,
+                ASD2101 USB, and ASD2009 Proto board.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/wiring-schematic/"
+                  >Wiring &amp; Schematics</a
+                >
+                (<code>/main/wiring-schematic/</code>) — KY-018 3-pin routing,
+                10k pull-down divider circuit, and 3.3V logic rail safety
+                analysis.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/ble112-bgapi/"
+                  >BLE112 BGAPI Protocol</a
+                >
+                (<code>/main/ble112-bgapi/</code>) — Silicon Labs BGAPI protocol
+                specification, GATT handles 17/20, packet structures, and BlueZ
+                CCCD settling delay.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/ky018-calibration/"
+                  >Calibration &amp; Physics</a
+                >
+                (<code>/main/ky018-calibration/</code>) — CdS photoconductivity
+                power-law formulas, empirical verification points, and
+                ADC-to-lux estimation curves.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/divider-math/"
+                  >Voltage Divider Math &amp; Proof</a
+                >
+                (<code>/main/divider-math/</code>) — Formal electrical
+                derivation and native MathML proof demonstrating High A0 =
+                Bright.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/wokwi-simulation/"
+                  >Wokwi Hardware Simulation</a
+                >
+                (<code>/main/wokwi-simulation/</code>) — In-browser simulation
+                with custom C-chip BLE112 emulation and step-by-step deployment
+                guide.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/firmware-guide/"
+                  >Firmware Guide</a
+                >
+                (<code>/main/firmware-guide/</code>) — 4x oversampled analog
+                reader, non-blocking telemetry stream rate control, and BGLib
+                host library integration.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/webmcp-tools/"
+                  >WebMCP Sensory Tools</a
+                >
+                (<code>/main/webmcp-tools/</code>) — 13 declarative WebMCP tools
+                enabling browser AI agents to read illuminance, toggle LEDs, and
+                stream telemetry.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/agent-skills/"
+                  >Agent Skills</a
+                >
+                (<code>/main/agent-skills/</code>) — Autonomous agent skills
+                conforming to the open Agent Skills standard and instant slash
+                commands.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/troubleshooting/"
+                  >Troubleshooting &amp; Diagnostics</a
+                >
+                (<code>/main/troubleshooting/</code>) — Diagnostic guide for
+                BlueZ GATT error 133, Web Bluetooth flags, and USB break
+                recovery.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-light-meter/main/download-center/"
+                  >Download Center</a
+                >
+                (<code>/main/download-center/</code>) — Direct downloads for
+                Arduino sketches, Wokwi simulation files, and JavaScript
+                modules.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- Group 3: Starter Templates & Automated Pipelines -->
+      <section aria-labelledby="starters-heading">
+        <h3 id="starters-heading" class="category-heading">
+          <i class="material-icons" aria-hidden="true">alt_route</i>
+          <span>Starter Templates &amp; Automated Pipelines</span>
+        </h3>
+
+        <!-- ShadowClaw Template -->
+        <article
+          class="card outlined project-card"
+          aria-labelledby="proj-template"
+        >
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-template">
+              <a href="https://xt-ml.github.io/shadow-claw-template/"
                 >ShadowClaw Template</a
               >
-              (<code>/main/</code>) — Starter landing page demonstrating how
-              markdown and HTML files authored in <code>pages/main/</code> are
-              automatically pre-rendered into a static site via GitHub Actions.
-            </li>
-            <li>
-              <a href="https://xt-ml.github.io/shadow-claw-template/main/about/"
-                >About</a
-              >
-              (<code>/main/about/</code>) — Overview page illustrating a
-              content-only static site structure and demonstrating inter-page
-              navigation within a ShadowClaw template project.
-            </li>
-            <li>
+            </h4>
+            <div class="project-card__actions">
               <a
-                href="https://xt-ml.github.io/shadow-claw-template/main/memory/"
-                >Agent Memory</a
+                href="https://xt-ml.github.io/shadow-claw-template/"
+                class="button text"
+                >Live Preview</a
               >
-              (<code>/main/memory/</code>) — Template memory reference outlining
-              workspace conventions for skills, declarative JSON tools, portable
-              ESM scripts (<code>.agents/scripts/</code>), and RFC v0.2.0 Agent
-              Skills discovery.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-card__header">
-          <h3 class="project-card__title">
-            <a href="https://xt-ml.github.io/shadow-claw-agent-cli-weather/"
-              >ShadowClaw Agent CLI Weather</a
-            >
-          </h3>
-          <div class="project-card__links">
-            <a href="https://xt-ml.github.io/shadow-claw-agent-cli-weather/"
-              >Live Site</a
-            >
-            ·
-            <a
-              href="https://github.com/xt-ml/shadow-claw-agent-cli-weather/blob/main/README.md"
-              >README</a
-            >
-            ·
-            <a href="https://github.com/xt-ml/shadow-claw-agent-cli-weather"
-              >GitHub Repo</a
-            >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-template/blob/main/README.md"
+                class="button text"
+                >README</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/xt-ml/shadow-claw-template"
+                class="button text"
+                >GitHub Repo</a
+              >
+            </div>
           </div>
-        </div>
-        <p class="project-card__desc">
-          Model-agnostic weather and report-generation pipeline for operational
-          forecasting, downstream markdown generation, and agent-driven
-          automation workflows.
-        </p>
-      </div>
+          <p class="subtitle project-card__desc">
+            Starter template repository for authoring and deploying static
+            websites, knowledge hubs, and custom agent skills driven by the
+            ShadowClaw engine.
+          </p>
 
-      <div class="project-card">
-        <div class="project-card__header">
-          <h3 class="project-card__title">
-            <a href="https://xt-ml.github.io/shadow-claw-light-meter/"
-              >TinyDuino LightMeter</a
-            >
-          </h3>
-          <div class="project-card__links">
-            <a href="https://xt-ml.github.io/shadow-claw-light-meter/"
-              >Live App</a
-            >
-            ·
-            <a
-              href="https://github.com/xt-ml/shadow-claw-light-meter/blob/main/README.md"
-              >README</a
-            >
-            ·
-            <a href="https://github.com/xt-ml/shadow-claw-light-meter"
-              >GitHub Repo</a
-            >
+          <div class="project-card__subpages">
+            <h5 class="project-card__subpages-heading">Published Pages:</h5>
+            <ul class="project-card__subpages-list">
+              <li>
+                <a href="https://xt-ml.github.io/shadow-claw-template/main/"
+                  >ShadowClaw Template</a
+                >
+                (<code>/main/</code>) — Starter landing page demonstrating how
+                markdown and HTML files authored in <code>pages/main/</code> are
+                automatically pre-rendered into a static site via GitHub
+                Actions.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-template/main/about/"
+                  >About</a
+                >
+                (<code>/main/about/</code>) — Overview page illustrating a
+                content-only static site structure and demonstrating inter-page
+                navigation within a ShadowClaw template project.
+              </li>
+              <li>
+                <a
+                  href="https://xt-ml.github.io/shadow-claw-template/main/memory/"
+                  >Agent Memory</a
+                >
+                (<code>/main/memory/</code>) — Template memory reference
+                outlining workspace conventions for skills, declarative JSON
+                tools, portable ESM scripts (<code>.agents/scripts/</code>), and
+                RFC v0.2.0 Agent Skills discovery.
+              </li>
+            </ul>
           </div>
-        </div>
-        <p class="project-card__desc">
-          Hardware light meter sensory workbench, Web Bluetooth GATT telemetry
-          engine, declarative WebMCP sensory tools, and autonomous agent skills
-          for TinyDuino (ASM2001) + Bluegiga BLE112 (ASD2112) + KY-018
-          photoresistor.
-        </p>
+        </article>
 
-        <div class="project-card__subpages">
-          <h4 class="project-card__subpages-heading">
-            Published Pages &amp; Guides:
-          </h4>
-          <ul class="project-card__subpages-list">
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/tinyduino/"
-                >Interactive Workbench</a
+        <!-- ShadowClaw Agent CLI Weather -->
+        <article
+          class="card outlined project-card"
+          aria-labelledby="proj-weather"
+        >
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-weather">
+              <a href="https://xt-ml.github.io/shadow-claw-agent-cli-weather/"
+                >ShadowClaw Agent CLI Weather</a
               >
-              (<code>/main/tinyduino/</code>) — Real-time Web Bluetooth GATT
-              telemetry workbench with dual-dial SVG gauges, scrolling waveform
-              timeline, and live hardware controls.
-            </li>
-            <li>
+            </h4>
+            <div class="project-card__actions">
               <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/hardware-architecture/"
-                >Hardware Architecture</a
+                href="https://xt-ml.github.io/shadow-claw-agent-cli-weather/"
+                class="button text"
+                >Live Site</a
               >
-              (<code>/main/hardware-architecture/</code>) — 4-layer modular
-              TinyDuino stack breakdown covering ASM2001, ASD2112 BLE112,
-              ASD2101 USB, and ASD2009 Proto board.
-            </li>
-            <li>
+              <span class="sep" aria-hidden="true">·</span>
               <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/wiring-schematic/"
-                >Wiring &amp; Schematics</a
+                href="https://github.com/xt-ml/shadow-claw-agent-cli-weather/blob/main/README.md"
+                class="button text"
+                >README</a
               >
-              (<code>/main/wiring-schematic/</code>) — KY-018 3-pin routing, 10k
-              pull-down divider circuit, and 3.3V logic rail safety analysis.
-            </li>
-            <li>
+              <span class="sep" aria-hidden="true">·</span>
               <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/ble112-bgapi/"
-                >BLE112 BGAPI Protocol</a
+                href="https://github.com/xt-ml/shadow-claw-agent-cli-weather"
+                class="button text"
+                >GitHub Repo</a
               >
-              (<code>/main/ble112-bgapi/</code>) — Silicon Labs BGAPI protocol
-              specification, GATT handles 17/20, packet structures, and BlueZ
-              CCCD settling delay.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/ky018-calibration/"
-                >Calibration &amp; Physics</a
-              >
-              (<code>/main/ky018-calibration/</code>) — CdS photoconductivity
-              power-law formulas, empirical verification points, and ADC-to-lux
-              estimation curves.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/divider-math/"
-                >Voltage Divider Math &amp; Proof</a
-              >
-              (<code>/main/divider-math/</code>) — Formal electrical derivation
-              and native MathML proof demonstrating High A0 = Bright.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/wokwi-simulation/"
-                >Wokwi Hardware Simulation</a
-              >
-              (<code>/main/wokwi-simulation/</code>) — In-browser simulation
-              with custom C-chip BLE112 emulation and step-by-step deployment
-              guide.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/firmware-guide/"
-                >Firmware Guide</a
-              >
-              (<code>/main/firmware-guide/</code>) — 4x oversampled analog
-              reader, non-blocking telemetry stream rate control, and BGLib host
-              library integration.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/webmcp-tools/"
-                >WebMCP Sensory Tools</a
-              >
-              (<code>/main/webmcp-tools/</code>) — 13 declarative WebMCP tools
-              enabling browser AI agents to read illuminance, toggle LEDs, and
-              stream telemetry.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/agent-skills/"
-                >Agent Skills</a
-              >
-              (<code>/main/agent-skills/</code>) — Autonomous agent skills
-              conforming to the open Agent Skills standard and instant slash
-              commands.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/troubleshooting/"
-                >Troubleshooting &amp; Diagnostics</a
-              >
-              (<code>/main/troubleshooting/</code>) — Diagnostic guide for BlueZ
-              GATT error 133, Web Bluetooth flags, and USB break recovery.
-            </li>
-            <li>
-              <a
-                href="https://xt-ml.github.io/shadow-claw-light-meter/main/download-center/"
-                >Download Center</a
-              >
-              (<code>/main/download-center/</code>) — Direct downloads for
-              Arduino sketches, Wokwi simulation files, and JavaScript modules.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-card__header">
-          <h3 class="project-card__title">
-            <a href="https://kherrick.github.io/block-garden-knowledge-hub/"
-              >Block Garden Knowledge Hub</a
-            >
-          </h3>
-          <div class="project-card__links">
-            <a href="https://kherrick.github.io/block-garden-knowledge-hub/"
-              >Live Site</a
-            >
-            ·
-            <a
-              href="https://github.com/kherrick/block-garden-knowledge-hub/blob/main/README.md"
-              >README</a
-            >
-            ·
-            <a href="https://github.com/kherrick/block-garden-knowledge-hub"
-              >GitHub Repo</a
-            >
+            </div>
           </div>
-        </div>
-        <p class="project-card__desc">
-          Interactive documentation portal and technical reference guide for
-          Block Garden—a 3D voxel sandbox exploration, procedural world
-          generation, and farming game engine—featuring embedded custom
-          elements, modding APIs, and in-game agent tools.
-        </p>
-      </div>
+          <p class="subtitle project-card__desc">
+            Model-agnostic weather and report-generation pipeline for
+            operational forecasting, downstream markdown generation, and
+            agent-driven automation workflows.
+          </p>
+        </article>
+      </section>
 
-      <div class="project-card">
-        <div class="project-card__header">
-          <h3 class="project-card__title">
-            <a href="https://kherrick.github.io/pwgen-knowledge-hub/"
-              >pwgen Knowledge Hub</a
-            >
-          </h3>
-          <div class="project-card__links">
-            <a href="https://kherrick.github.io/pwgen-knowledge-hub/"
-              >Live Site</a
-            >
-            ·
-            <a
-              href="https://github.com/kherrick/pwgen-knowledge-hub/blob/main/README.md"
-              >README</a
-            >
-            ·
-            <a href="https://github.com/kherrick/pwgen-knowledge-hub"
-              >GitHub Repo</a
-            >
+      <!-- Group 4: Interactive Knowledge Hubs -->
+      <section aria-labelledby="hubs-heading">
+        <h3 id="hubs-heading" class="category-heading">
+          <i class="material-icons" aria-hidden="true">menu_book</i>
+          <span>Interactive Knowledge Hubs</span>
+        </h3>
+
+        <!-- Block Garden Knowledge Hub -->
+        <article
+          class="card outlined project-card"
+          aria-labelledby="proj-block-garden"
+        >
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-block-garden">
+              <a href="https://kherrick.github.io/block-garden-knowledge-hub/"
+                >Block Garden Knowledge Hub</a
+              >
+            </h4>
+            <div class="project-card__actions">
+              <a
+                href="https://kherrick.github.io/block-garden-knowledge-hub/"
+                class="button text"
+                >Live Site</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/kherrick/block-garden-knowledge-hub/blob/main/README.md"
+                class="button text"
+                >README</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/kherrick/block-garden-knowledge-hub"
+                class="button text"
+                >GitHub Repo</a
+              >
+            </div>
           </div>
-        </div>
-        <p class="project-card__desc">
-          Interactive documentation platform and demonstration engine for the
-          classic Unix pwgen password generator compiled to WebAssembly,
-          featuring &lt;x-pwgen&gt; custom elements, entropy analysis, and
-          declarative password-generation agent tools.
+          <p class="subtitle project-card__desc">
+            Interactive documentation portal and technical reference guide for
+            Block Garden—a 3D voxel sandbox exploration, procedural world
+            generation, and farming game engine—featuring embedded custom
+            elements, modding APIs, and in-game agent tools.
+          </p>
+        </article>
+
+        <!-- pwgen Knowledge Hub -->
+        <article
+          class="card outlined project-card"
+          aria-labelledby="proj-pwgen"
+        >
+          <div class="project-card__header">
+            <h4 class="project-card__title" id="proj-pwgen">
+              <a href="https://kherrick.github.io/pwgen-knowledge-hub/"
+                >pwgen Knowledge Hub</a
+              >
+            </h4>
+            <div class="project-card__actions">
+              <a
+                href="https://kherrick.github.io/pwgen-knowledge-hub/"
+                class="button text"
+                >Live Site</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/kherrick/pwgen-knowledge-hub/blob/main/README.md"
+                class="button text"
+                >README</a
+              >
+              <span class="sep" aria-hidden="true">·</span>
+              <a
+                href="https://github.com/kherrick/pwgen-knowledge-hub"
+                class="button text"
+                >GitHub Repo</a
+              >
+            </div>
+          </div>
+          <p class="subtitle project-card__desc">
+            Interactive documentation platform and demonstration engine for the
+            classic Unix pwgen password generator compiled to WebAssembly,
+            featuring <code>&lt;x-pwgen&gt;</code> custom elements, entropy
+            analysis, and declarative password-generation agent tools.
+          </p>
+        </article>
+      </section>
+
+      <!-- Section: Static Publishing with ShadowClaw -->
+      <section aria-labelledby="publishing-heading">
+        <h2 id="publishing-heading">Static Publishing with ShadowClaw</h2>
+
+        <p>
+          ShadowClaw combines an interactive browser or Electron client with a
+          headless Node.js agent, a local service layer, and external tool
+          connections. The same agentic core, declarative skills, and tool
+          pipelines can run across each environment.
         </p>
-      </div>
 
-      <h2>Static Publishing with ShadowClaw</h2>
+        <h4>Documentation</h4>
+        <p>
+          Read the
+          <a href="https://xt-ml.github.io/shadow-claw/docs/README.md"
+            >public documentation index</a
+          >, including the
+          <a
+            href="https://xt-ml.github.io/shadow-claw/docs/architecture/overview.md"
+            >architecture overview</a
+          >,
+          <a href="https://xt-ml.github.io/shadow-claw/docs/subsystems/cli.md"
+            >CLI and static publishing guide</a
+          >,
+          <a
+            href="https://xt-ml.github.io/shadow-claw/docs/subsystems/control-plane.md"
+            >control plane reference</a
+          >,
+          <a
+            href="https://xt-ml.github.io/shadow-claw/docs/subsystems/webmcp.md"
+            >WebMCP guide</a
+          >, and
+          <a
+            href="https://xt-ml.github.io/shadow-claw/docs/subsystems/mcp-server.md"
+            >MCP server reference</a
+          >.
+        </p>
 
-      <p>
-        ShadowClaw combines an interactive browser or Electron client with a
-        headless Node.js agent, a local service layer, and external tool
-        connections. The same agentic core, declarative skills, and tool
-        pipelines can run across each environment.
-      </p>
-
-      <h3>Documentation</h3>
-      <p>
-        Read the
-        <a href="https://xt-ml.github.io/shadow-claw/docs/README.md"
-          >public documentation index</a
-        >, including the
-        <a
-          href="https://xt-ml.github.io/shadow-claw/docs/architecture/overview.md"
-          >architecture overview</a
-        >,
-        <a href="https://xt-ml.github.io/shadow-claw/docs/subsystems/cli.md"
-          >CLI and static publishing guide</a
-        >,
-        <a
-          href="https://xt-ml.github.io/shadow-claw/docs/subsystems/control-plane.md"
-          >control plane reference</a
-        >,
-        <a href="https://xt-ml.github.io/shadow-claw/docs/subsystems/webmcp.md"
-          >WebMCP guide</a
-        >, and
-        <a
-          href="https://xt-ml.github.io/shadow-claw/docs/subsystems/mcp-server.md"
-          >MCP server reference</a
-        >.
-      </p>
-
-      <h3>Interactive Client</h3>
-      <p>
-        Run the browser-native PWA or Electron desktop app with orchestration,
-        model calls, and tools isolated in a Web Worker. Client workspaces use
-        OPFS and IndexedDB, with Web Components providing the interface.
-      </p>
-      <pre><code># Start the interactive client with live reload
+        <h4>Interactive Client</h4>
+        <p>
+          Run the browser-native PWA or Electron desktop app with orchestration,
+          model calls, and tools isolated in a Web Worker. Client workspaces use
+          OPFS and IndexedDB, with Web Components providing the interface.
+        </p>
+        <pre><code># Start the interactive client with live reload
 npx shadow-claw dev --open</code></pre>
 
-      <h3>Headless CLI Agent</h3>
-      <p>
-        Run the same reasoning loop directly from a terminal or CI pipeline. The
-        CLI uses Node.js, native filesystem access, SQLite persistence, host
-        shell execution, and local or cloud model providers.
-      </p>
-      <pre><code># Initialize a workspace and run a headless prompt
+        <h4>Headless CLI Agent</h4>
+        <p>
+          Run the same reasoning loop directly from a terminal or CI pipeline.
+          The CLI uses Node.js, native filesystem access, SQLite persistence,
+          host shell execution, and local or cloud model providers.
+        </p>
+        <pre><code># Initialize a workspace and run a headless prompt
 npx shadow-claw agent init ./my-project
 npx shadow-claw agent --workspace ./my-project run "summarize this workspace"
 
@@ -676,128 +1581,623 @@ npx shadow-claw agent --workspace ./my-project run "summarize this workspace"
 npx shadow-claw agent tools
 npx shadow-claw agent skills</code></pre>
 
-      <h3>Server &amp; Control Plane</h3>
-      <p>
-        Run the backend independently of the frontend. The Express service
-        exposes the proxy, scheduler, REST control plane, and MCP endpoint so
-        static sites, browser tabs, CLI commands, and external clients can share
-        a local or remote backend.
-      </p>
-      <pre><code># Start services without building or serving a frontend
+        <h4>Server &amp; Control Plane</h4>
+        <p>
+          Run the backend independently of the frontend. The Express service
+          exposes the proxy, scheduler, REST control plane, and MCP endpoint so
+          static sites, browser tabs, CLI commands, and external clients can
+          share a local or remote backend.
+        </p>
+        <pre><code># Start services without building or serving a frontend
 npx shadow-claw server</code></pre>
 
-      <h3>Drive Connected Clients</h3>
-      <p>
-        The control plane turns connected browser and Electron clients into
-        remotely addressable execution surfaces. From the CLI, you can list
-        clients, send prompts, inspect scheduled tasks, read client state, and
-        create or manage OPFS workspace backups.
-      </p>
-      <pre><code># Discover and operate connected clients
+        <h4>Drive Connected Clients</h4>
+        <p>
+          The control plane turns connected browser and Electron clients into
+          remotely addressable execution surfaces. From the CLI, you can list
+          clients, send prompts, inspect scheduled tasks, read client state, and
+          create or manage OPFS workspace backups.
+        </p>
+        <pre><code># Discover and operate connected clients
 npx shadow-claw clients
 npx shadow-claw send "summarize the active workspace" --client &lt;id&gt;
 npx shadow-claw tasks --client &lt;id&gt;
 npx shadow-claw backup
 npx shadow-claw backup list</code></pre>
 
-      <h3>WebMCP &amp; External Agents</h3>
-      <p>
-        In supported browsers, ShadowClaw registers its tool catalog on
-        <code>document.modelContext</code> through WebMCP and routes execution
-        through the Web Worker. External AI clients can use the official MCP
-        server over Streamable HTTP or the CLI STDIO bridge, while connected
-        clients communicate with the control plane over SSE, WebSocket, or
-        peer-to-peer WebRTC DataChannels.
-      </p>
-      <pre><code># Connect an MCP-compatible desktop client over STDIO
+        <h4>WebMCP &amp; External Agents</h4>
+        <p>
+          In supported browsers, ShadowClaw registers its tool catalog on
+          <code>document.modelContext</code> through WebMCP and routes execution
+          through the Web Worker. External AI clients can use the official MCP
+          server over Streamable HTTP or the CLI STDIO bridge, while connected
+          clients communicate with the control plane over SSE, WebSocket, or
+          peer-to-peer WebRTC DataChannels.
+        </p>
+        <pre><code># Connect an MCP-compatible desktop client over STDIO
 npx shadow-claw mcp
 
 # Start a direct peer-to-peer WebRTC listener
 npx shadow-claw webrtc listen</code></pre>
 
-      <h3>Static Publishing</h3>
-      <p>
-        Content repositories use ShadowClaw's dual-root build pipeline to
-        combine the shared runtime bundles with their own pages, assets,
-        configuration, skills, and tools:
-      </p>
-      <pre><code># Start local development server on http://127.0.0.1:8888
+        <h4>Static Publishing</h4>
+        <p>
+          Content repositories use ShadowClaw's dual-root build pipeline to
+          combine the shared runtime bundles with their own pages, assets,
+          configuration, skills, and tools:
+        </p>
+        <pre><code># Start local development server on http://127.0.0.1:8888
 npx shadow-claw dev
 
 # Or compile static production distribution into ./dist/public
 npx shadow-claw build --prod</code></pre>
 
-      <h3>Deployment Strategies</h3>
-      <ul>
-        <li>
-          <strong>Engine repository:</strong>
-          <a href="https://github.com/xt-ml/shadow-claw">xt-ml/shadow-claw</a>
-          is the full ShadowClaw application, CLI, server, and build toolchain.
-          Its own GitHub Pages deployment is the reference app at
-          <a href="https://xt-ml.github.io/shadow-claw/"
-            >xt-ml.github.io/shadow-claw</a
-          >.
-        </li>
-        <li>
-          <strong>Template repository:</strong>
-          <a href="https://github.com/xt-ml/shadow-claw-template"
-            >xt-ml/shadow-claw-template</a
-          >
-          is the reusable starter for content-only sites. It checks out or
-          invokes ShadowClaw in GitHub Actions and publishes the resulting
-          <code>dist/public</code> directory.
-        </li>
-        <li>
-          <strong>Knowledge hub repositories:</strong>
-          <a href="https://github.com/kherrick/block-garden-knowledge-hub"
-            >block-garden-knowledge-hub</a
-          >
-          and
-          <a href="https://github.com/kherrick/pwgen-knowledge-hub"
-            >pwgen-knowledge-hub</a
-          >
-          are concrete Strategy B/C content projects. They keep pages, assets,
-          declarative skills, and tools in their own repositories while using
-          ShadowClaw's CLI workflow to deploy interactive knowledge hubs.
-        </li>
-        <li>
-          <strong>Headless automation and deployment pattern:</strong>
-          <a href="https://github.com/xt-ml/shadow-claw-agent-cli-weather"
-            >shadow-claw-agent-cli-weather</a
-          >
-          uses the <code>shadow-claw agent</code> runtime directly for scheduled
-          weather retrieval, markdown report generation, and downstream
-          automation pipelines. It is a deployment-ready pattern for generating
-          structured content for other agents, tooling, or publishing systems.
-        </li>
-        <li>
-          <strong>Hardware Sensory Workbench pattern:</strong>
-          <a href="https://github.com/xt-ml/shadow-claw-light-meter"
-            >shadow-claw-light-meter</a
-          >
-          demonstrates integrating physical microcontroller hardware (TinyDuino,
-          Bluegiga BLE112, KY-018 photoresistor) with Web Bluetooth GATT and
-          declarative WebMCP tools, exposing instant slash commands without LLM
-          latency.
-        </li>
-        <li>
-          <strong>Single-file distribution pattern:</strong>
-          <a href="https://github.com/xt-ml/shadow-claw-single-file"
-            >shadow-claw-single-file</a
-          >
-          demonstrates ShadowClaw's Tier 1/Tier 3 standalone deployment
-          strategy, bundling the complete client interface, static pages, and
-          memory scratchpads into a single self-contained
-          <code>index.html</code> file without requiring local build artifacts
-          or multi-file dependencies.
-        </li>
-        <li>
-          <strong>Build modes:</strong> Any content project can preview with
-          <code>npx shadow-claw dev</code> and publish with
-          <code>npx shadow-claw build --prod</code>, either through the template
-          workflow, a pages-only workflow, or a pinned npm/CLI dependency.
-        </li>
-      </ul>
+        <h4>Deployment Strategies</h4>
+        <ul>
+          <li>
+            <strong>Engine repository:</strong>
+            <a href="https://github.com/xt-ml/shadow-claw">xt-ml/shadow-claw</a>
+            is the full ShadowClaw application, CLI, server, and build
+            toolchain. Its own GitHub Pages deployment is the reference app at
+            <a href="https://xt-ml.github.io/shadow-claw/"
+              >xt-ml.github.io/shadow-claw</a
+            >.
+          </li>
+          <li>
+            <strong>Template repository:</strong>
+            <a href="https://github.com/xt-ml/shadow-claw-template"
+              >xt-ml/shadow-claw-template</a
+            >
+            is the reusable starter for content-only sites. It checks out or
+            invokes ShadowClaw in GitHub Actions and publishes the resulting
+            <code>dist/public</code> directory.
+          </li>
+          <li>
+            <strong>Knowledge hub repositories:</strong>
+            <a href="https://github.com/kherrick/block-garden-knowledge-hub"
+              >block-garden-knowledge-hub</a
+            >
+            and
+            <a href="https://github.com/kherrick/pwgen-knowledge-hub"
+              >pwgen-knowledge-hub</a
+            >
+            are concrete Strategy B/C content projects. They keep pages, assets,
+            declarative skills, and tools in their own repositories while using
+            ShadowClaw's CLI workflow to deploy interactive knowledge hubs.
+          </li>
+          <li>
+            <strong>Headless automation and deployment pattern:</strong>
+            <a href="https://github.com/xt-ml/shadow-claw-agent-cli-weather"
+              >shadow-claw-agent-cli-weather</a
+            >
+            uses the <code>shadow-claw agent</code> runtime directly for
+            scheduled weather retrieval, markdown report generation, and
+            downstream automation pipelines. It is a deployment-ready pattern
+            for generating structured content for other agents, tooling, or
+            publishing systems.
+          </li>
+          <li>
+            <strong>Creative In-Browser Audio Workbench pattern:</strong>
+            <a href="https://github.com/xt-ml/shadow-claw-daw"
+              >shadow-claw-daw</a
+            >
+            demonstrates an in-browser Digital Audio Workstation workbench,
+            direct-rendered top-level AudioContext execution, TC39 Signals, Web
+            Locks leader election, and 15 declarative
+            <code>scdaw_*</code> WebMCP audio tools for autonomous music
+            composition and high-speed offline WAV rendering.
+          </li>
+          <li>
+            <strong>Hardware Sensory Workbench pattern:</strong>
+            <a href="https://github.com/xt-ml/shadow-claw-light-meter"
+              >shadow-claw-light-meter</a
+            >
+            demonstrates integrating physical microcontroller hardware
+            (TinyDuino, Bluegiga BLE112, KY-018 photoresistor) with Web
+            Bluetooth GATT and declarative WebMCP tools, exposing instant slash
+            commands without LLM latency.
+          </li>
+          <li>
+            <strong>Single-file distribution pattern:</strong>
+            <a href="https://github.com/xt-ml/shadow-claw-single-file"
+              >shadow-claw-single-file</a
+            >
+            demonstrates ShadowClaw's Tier 1/Tier 3 standalone deployment
+            strategy, bundling the complete client interface, static pages, and
+            memory scratchpads into a single self-contained
+            <code>index.html</code> file without requiring local build artifacts
+            or multi-file dependencies.
+          </li>
+          <li>
+            <strong>Build modes:</strong> Any content project can preview with
+            <code>npx shadow-claw dev</code> and publish with
+            <code>npx shadow-claw build --prod</code>, either through the
+            template workflow, a pages-only workflow, or a pinned npm/CLI
+            dependency.
+          </li>
+        </ul>
+      </section>
     </main>
+
+    <!-- Material Design Lite Clean Site Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__links">
+        <a href="https://xt-ml.github.io/">xt-ml.github.io</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://github.com/xt-ml" target="_blank" rel="noopener"
+          >GitHub Organization</a
+        >
+        <span class="sep" aria-hidden="true">·</span>
+        <a
+          href="https://kherrick.github.io/material-design-lite/"
+          target="_blank"
+          rel="noopener"
+          >Material Design Lite</a
+        >
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="#main-content">Back to Top</a>
+      </div>
+      <div class="site-footer__meta">
+        <span
+          >Projects, documentation, and static deployments from the xt-ml
+          organization.</span
+        >
+        <span>Licensed under AGPLv3</span>
+      </div>
+    </footer>
+
+    <!-- Material Theme Customizer Drawer (Ported from Material Design Lite Options.astro) -->
+    <div
+      class="theme-backdrop"
+      id="theme-backdrop"
+      aria-hidden="true"
+      tabindex="-1"
+    ></div>
+    <aside
+      class="options"
+      id="theme-drawer"
+      role="dialog"
+      aria-label="Material Theme Customizer"
+      aria-modal="true"
+    >
+      <div class="controls">
+        <div class="header">
+          <h3 id="theme-drawer-title">Material Theme</h3>
+          <button
+            class="close-options icon-button"
+            id="close-options"
+            type="button"
+            aria-label="Close Material Theme customizer"
+          >
+            <i class="material-icons" aria-hidden="true">close</i>
+          </button>
+        </div>
+
+        <h4>Color</h4>
+        <div class="color-picker-row">
+          <div class="color-picker-control">
+            <input
+              id="source"
+              type="color"
+              value="#0969da"
+              aria-label="Source Color Picker"
+            />
+            <span id="source-hex">#0969da</span>
+          </div>
+          <label for="source">Source Color</label>
+        </div>
+
+        <div class="color-presets" role="group" aria-label="Preset Colors">
+          <button
+            type="button"
+            class="preset-chip"
+            data-color="#0969da"
+            style="--chip-color: #0969da"
+            title="xt-ml Blue (Default)"
+            aria-label="xt-ml Blue"
+          ></button>
+          <button
+            type="button"
+            class="preset-chip"
+            data-color="#6750A4"
+            style="--chip-color: #6750a4"
+            title="Material Purple"
+            aria-label="Material Purple"
+          ></button>
+          <button
+            type="button"
+            class="preset-chip"
+            data-color="#006874"
+            style="--chip-color: #006874"
+            title="Cyan Teal"
+            aria-label="Cyan Teal"
+          ></button>
+          <button
+            type="button"
+            class="preset-chip"
+            data-color="#1b6e40"
+            style="--chip-color: #1b6e40"
+            title="Forest Green"
+            aria-label="Forest Green"
+          ></button>
+          <button
+            type="button"
+            class="preset-chip"
+            data-color="#ba1a1a"
+            style="--chip-color: #ba1a1a"
+            title="Crimson Red"
+            aria-label="Crimson Red"
+          ></button>
+        </div>
+
+        <div
+          class="segmented-button"
+          role="radiogroup"
+          aria-label="Theme Brightness"
+        >
+          <input
+            type="radio"
+            name="brightness"
+            value="light"
+            id="light"
+            tabindex="0"
+          />
+          <label for="light">
+            <i class="material-icons" aria-hidden="true">wb_sunny</i>
+            <span>Light</span>
+          </label>
+
+          <input
+            type="radio"
+            name="brightness"
+            value="dark"
+            id="dark"
+            tabindex="0"
+          />
+          <label for="dark">
+            <i class="material-icons" aria-hidden="true">brightness_2</i>
+            <span>Dark</span>
+          </label>
+        </div>
+
+        <h4>Shape</h4>
+
+        <div class="shape-slider-group">
+          <div class="shape-slider-group__header">
+            <label for="shape-small">Small</label>
+            <span id="shape-small-val">8px</span>
+          </div>
+          <input
+            class="slider"
+            id="shape-small"
+            type="range"
+            min="0"
+            max="30"
+            value="8"
+            aria-label="Small Corner Radius"
+          />
+        </div>
+
+        <div class="shape-slider-group">
+          <div class="shape-slider-group__header">
+            <label for="shape-medium">Medium</label>
+            <span id="shape-medium-val">10px</span>
+          </div>
+          <input
+            class="slider"
+            id="shape-medium"
+            type="range"
+            min="0"
+            max="40"
+            value="10"
+            aria-label="Medium Corner Radius"
+          />
+        </div>
+
+        <div class="shape-slider-group">
+          <div class="shape-slider-group__header">
+            <label for="shape-large">Large</label>
+            <span id="shape-large-val">16px</span>
+          </div>
+          <input
+            class="slider"
+            id="shape-large"
+            type="range"
+            min="0"
+            max="50"
+            value="16"
+            aria-label="Large Corner Radius"
+          />
+        </div>
+
+        <div>
+          <button
+            id="reset-theme"
+            class="button outlined"
+            type="button"
+            aria-label="Reset Theme"
+          >
+            Reset Theme
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Theme Controller Script -->
+    <script type="module">
+      const root = document.documentElement;
+      const body = document.body;
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+      const drawer = document.getElementById("theme-drawer");
+      const backdrop = document.getElementById("theme-backdrop");
+      const optionsBtn = document.getElementById("options");
+      const closeOptionsBtn = document.getElementById("close-options");
+
+      const sourceInput = document.getElementById("source");
+      const sourceHex = document.getElementById("source-hex");
+      const lightRadio = document.getElementById("light");
+      const darkRadio = document.getElementById("dark");
+      const sSmall = document.getElementById("shape-small");
+      const sMedium = document.getElementById("shape-medium");
+      const sLarge = document.getElementById("shape-large");
+      const sSmallVal = document.getElementById("shape-small-val");
+      const sMediumVal = document.getElementById("shape-medium-val");
+      const sLargeVal = document.getElementById("shape-large-val");
+      const resetThemeBtn = document.getElementById("reset-theme");
+      const styleTarget = document.getElementById("dynamic-theme");
+
+      // Dynamic Material Color Utilities loader
+      let mcuModule = null;
+      async function getMcu() {
+        if (!mcuModule) {
+          mcuModule =
+            await import("https://esm.sh/@material/material-color-utilities@0.4.0/es2022/material-color-utilities.mjs");
+        }
+        return mcuModule;
+      }
+
+      function hexToRgb(value) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(value);
+        return result
+          ? [
+              parseInt(result[1], 16),
+              parseInt(result[2], 16),
+              parseInt(result[3], 16),
+            ]
+          : [0, 0, 0];
+      }
+
+      async function applySourceColor(color) {
+        root.style.setProperty("--md-source", color);
+        if (sourceHex) {
+          sourceHex.textContent = color;
+        }
+        if (themeMeta) {
+          themeMeta.setAttribute("content", color);
+        }
+
+        try {
+          const { themeFromSourceColor, argbFromHex, hexFromArgb } =
+            await getMcu();
+          const theme = themeFromSourceColor(argbFromHex(color));
+          const defaultTones = [
+            100, 99, 98, 95, 90, 80, 70, 60, 50, 40, 35, 30, 25, 20, 10, 5, 0,
+          ];
+          const output = [":root, :where(html), body {"];
+          output.push(`  --md-source: ${color};`);
+
+          for (const [section, palette] of Object.entries(theme.palettes)) {
+            const token = section
+              .replace(/([a-z])([A-Z])/g, "$1-$2")
+              .toLowerCase();
+            for (const tone of defaultTones) {
+              const hex = hexFromArgb(palette.tone(tone));
+              const [r, g, b] = hexToRgb(hex);
+              output.push(
+                `  --md-ref-palette-${token}${tone}-rgb: ${r} ${g} ${b};`,
+              );
+              output.push(
+                `  --md-ref-palette-${token}${tone}: rgb(${r} ${g} ${b});`,
+              );
+            }
+          }
+          output.push("}");
+
+          // Dynamically map primary & container tokens to selected theme palette
+          output.push(`
+            :root, html, body, html.light-theme, body.light-theme {
+              --md-sys-color-primary: rgb(var(--md-ref-palette-primary40-rgb)) !important;
+              --md-sys-color-on-primary: rgb(var(--md-ref-palette-primary100-rgb)) !important;
+              --md-sys-color-primary-container: rgb(var(--md-ref-palette-primary90-rgb)) !important;
+              --md-sys-color-on-primary-container: rgb(var(--md-ref-palette-primary10-rgb)) !important;
+              --md-sys-color-secondary: rgb(var(--md-ref-palette-secondary40-rgb)) !important;
+              --md-sys-color-secondary-container: rgb(var(--md-ref-palette-secondary90-rgb)) !important;
+              --md-sys-color-on-secondary-container: rgb(var(--md-ref-palette-secondary10-rgb)) !important;
+            }
+            :root.dark-theme, html.dark-theme, body.dark-theme {
+              --md-sys-color-primary: rgb(var(--md-ref-palette-primary80-rgb)) !important;
+              --md-sys-color-on-primary: rgb(var(--md-ref-palette-primary20-rgb)) !important;
+              --md-sys-color-primary-container: rgb(var(--md-ref-palette-primary30-rgb)) !important;
+              --md-sys-color-on-primary-container: rgb(var(--md-ref-palette-primary90-rgb)) !important;
+              --md-sys-color-secondary: rgb(var(--md-ref-palette-secondary80-rgb)) !important;
+              --md-sys-color-secondary-container: rgb(var(--md-ref-palette-secondary30-rgb)) !important;
+              --md-sys-color-on-secondary-container: rgb(var(--md-ref-palette-secondary90-rgb)) !important;
+            }
+            @media (prefers-color-scheme: dark) {
+              :root:not(.light-theme), html:not(.light-theme), body:not(.light-theme) {
+                --md-sys-color-primary: rgb(var(--md-ref-palette-primary80-rgb)) !important;
+                --md-sys-color-on-primary: rgb(var(--md-ref-palette-primary20-rgb)) !important;
+                --md-sys-color-primary-container: rgb(var(--md-ref-palette-primary30-rgb)) !important;
+                --md-sys-color-on-primary-container: rgb(var(--md-ref-palette-primary90-rgb)) !important;
+                --md-sys-color-secondary: rgb(var(--md-ref-palette-secondary80-rgb)) !important;
+                --md-sys-color-secondary-container: rgb(var(--md-ref-palette-secondary30-rgb)) !important;
+                --md-sys-color-on-secondary-container: rgb(var(--md-ref-palette-secondary90-rgb)) !important;
+              }
+            }
+          `);
+
+          // Apply generated CSS tokens
+          styleTarget.textContent = output.join("\n");
+        } catch (err) {
+          console.warn("Could not load dynamic color utilities:", err);
+        }
+      }
+
+      function setLight(persist = true) {
+        lightRadio.checked = true;
+        darkRadio.checked = false;
+        root.classList.remove("dark-theme");
+        root.classList.add("light-theme");
+        body.classList.remove("dark-theme");
+        body.classList.add("light-theme");
+        if (persist) {
+          localStorage.setItem("theme_brightness", "light");
+        }
+      }
+
+      function setDark(persist = true) {
+        darkRadio.checked = true;
+        lightRadio.checked = false;
+        root.classList.remove("light-theme");
+        root.classList.add("dark-theme");
+        body.classList.remove("light-theme");
+        body.classList.add("dark-theme");
+        if (persist) {
+          localStorage.setItem("theme_brightness", "dark");
+        }
+      }
+
+      function openDrawer() {
+        drawer.classList.add("open");
+        backdrop.classList.add("open");
+        drawer.setAttribute("aria-hidden", "false");
+        closeOptionsBtn.focus();
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove("open");
+        backdrop.classList.remove("open");
+        drawer.setAttribute("aria-hidden", "true");
+        optionsBtn.focus();
+      }
+
+      function updateShape(key, val, elVal) {
+        elVal.textContent = val + "px";
+        root.style.setProperty(`--md-sys-shape-corner-${key}`, val + "px");
+        localStorage.setItem(`shape-${key}`, val);
+      }
+
+      // Event Listeners
+      optionsBtn.addEventListener("click", openDrawer);
+      closeOptionsBtn.addEventListener("click", closeDrawer);
+      backdrop.addEventListener("click", closeDrawer);
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && drawer.classList.contains("open")) {
+          closeDrawer();
+        }
+      });
+
+      lightRadio.addEventListener("change", () => setLight(true));
+      darkRadio.addEventListener("change", () => setDark(true));
+
+      prefersDark.addEventListener("change", (e) => {
+        if (!localStorage.getItem("theme_brightness")) {
+          if (e.matches) {
+            setDark(false);
+          } else {
+            setLight(false);
+          }
+        }
+      });
+
+      sSmall.addEventListener("input", () =>
+        updateShape("small", sSmall.value, sSmallVal),
+      );
+      sMedium.addEventListener("input", () =>
+        updateShape("medium", sMedium.value, sMediumVal),
+      );
+      sLarge.addEventListener("input", () =>
+        updateShape("large", sLarge.value, sLargeVal),
+      );
+
+      sourceInput.addEventListener("input", () => {
+        const color = sourceInput.value;
+        if (sourceHex) {
+          sourceHex.textContent = color;
+        }
+        localStorage.setItem("source-color", color);
+        applySourceColor(color);
+      });
+
+      document.querySelectorAll(".preset-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const color = chip.getAttribute("data-color");
+          if (color) {
+            sourceInput.value = color;
+            if (sourceHex) {
+              sourceHex.textContent = color;
+            }
+            localStorage.setItem("source-color", color);
+            applySourceColor(color);
+          }
+        });
+      });
+
+      resetThemeBtn.addEventListener("click", () => {
+        localStorage.removeItem("source-color");
+        localStorage.removeItem("theme_brightness");
+        localStorage.removeItem("shape-small");
+        localStorage.removeItem("shape-medium");
+        localStorage.removeItem("shape-large");
+        window.location.reload();
+      });
+
+      // Initialization on Load
+      function initTheme() {
+        // Brightness
+        const savedBrightness = localStorage.getItem("theme_brightness");
+        if (savedBrightness === "dark") {
+          setDark(false);
+        } else if (savedBrightness === "light") {
+          setLight(false);
+        } else if (prefersDark.matches) {
+          setDark(false);
+        } else {
+          setLight(false);
+        }
+
+        // Color
+        const savedColor = localStorage.getItem("source-color");
+        if (savedColor && savedColor !== "#0969da") {
+          sourceInput.value = savedColor;
+          if (sourceHex) {
+            sourceHex.textContent = savedColor;
+          }
+          applySourceColor(savedColor);
+        }
+
+        // Shapes
+        const small = localStorage.getItem("shape-small");
+        if (small) {
+          sSmall.value = small;
+          updateShape("small", small, sSmallVal);
+        }
+        const med = localStorage.getItem("shape-medium");
+        if (med) {
+          sMedium.value = med;
+          updateShape("medium", med, sMediumVal);
+        }
+        const large = localStorage.getItem("shape-large");
+        if (large) {
+          sLarge.value = large;
+          updateShape("large", large, sLargeVal);
+        }
+      }
+
+      initTheme();
+    </script>
   </body>
 </html>
